@@ -1,9 +1,9 @@
 {
-  "name": "zalando-tech-radar",
-  "version": "2018.5.0",
+  "name": "stitch-tech-radar",
+  "version": "2022.4.5",
   "description": "Visualizing our technology choices",
-  "homepage": "https://github.com/zalando/tech-radar#readme",
-  "repository": "https://github.com/zalando/tech-radar.git",
+  "homepage": "https://stitch.money/radar",
+  "repository": "https://github.com/Stitch-Money/tech-radar",
   "license": "MIT",
   "directories": {
     "doc": "docs"

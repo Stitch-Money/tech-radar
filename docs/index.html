@@ -2,620 +2,499 @@
 
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>Zalando Tech Radar</title>
+<title>Stitch Tech Radar</title>
 <link rel="shortcut icon" href="https://www.zalando.de/favicon.ico">
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="radar.js"></script>
+
+
 
 <link rel="stylesheet" href="radar.css">
 </head>
 
 <body>
 
-<svg id="radar"></svg>
+<div class="header">
+    <div class="pill title" style="background-color: black;">Tech Radar</div>
+    <div class="pill version">07.04.2022</div>
+    <img class="logo" width="125px" height="85px" src="./assets/images/Stitch Logo.svg">
+</div>
+
+  <svg id="radar"></svg>
 
 <script>
 radar_visualization({
   svg_id: "radar",
-  width: 1450,
-  height: 1000,
+  width: 1420,
+  height: 858,
   colors: {
     background: "#fff",
-    grid: "#bbb",
+    grid: "#D1CFD6",
+    circle: "#17121F",
     inactive: "#ddd"
   },
-  title: "Zalando Tech Radar — 2022.04",
+  title: "Stitch Tech Radar",
+  version: "07.04.2022",
   quadrants: [
-    { name: "Languages" },
-    { name: "Infrastructure" },
-    { name: "Datastores" },
-    { name: "Data Management" },
+    { name: "Techniques" },
+    { name: "Platforms" },
+    { name: "Languages and Frameworks" },
+    { name: "Tools" },
   ],
   rings: [
-    { name: "ADOPT", color: "#93c47d" },
-    { name: "TRIAL", color: "#93d2c2" },
-    { name: "ASSESS", color: "#fbdb84" },
-    { name: "HOLD", color: "#efafa9" }
+    { name: "Adopt", color: "#5F1CA1" },
+    { name: "Trial", color: "#911FFF" },
+    { name: "Assess", color: "#B66BFF" },
+    { name: "Hold", color: "#F4E9FF" }
   ],
   print_layout: true,
-  // zoomed_quadrant: 0,
   //ENTRIES
   entries: [
-      {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "AWS Athena",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "AWS Data Pipeline",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "AWS EMR",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "AWS Glue",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Airflow",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Databricks",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 1,
-        "label": "Flink",
-        "link": "https://engineering.zalando.com/tags/apache-flink.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 1,
-        "label": "Google BigQuery",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "Hadoop",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 1,
-        "label": "Presto",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Spark",
-        "link": "https://engineering.zalando.com/tags/apache-spark.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "YARN",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 2,
-        "label": "dbt",
-        "active": true,
-        "moved": 1
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "AWS DynamoDB",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "AWS S3",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "Aerospike",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 1,
-        "label": "Amazon Redshift",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "Cassandra",
-        "link": "https://engineering.zalando.com/tags/cassandra.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "Consul",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "CouchBase",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 1,
-        "label": "Druid",
-        "active": true,
-        "moved": 1
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "Elasticsearch",
-        "link": "https://engineering.zalando.com/tags/elasticsearch.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "Exasol",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 2,
-        "label": "Google Bigtable",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "HBase",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 1,
-        "label": "HDFS",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "Hazelcast",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "Memcached",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "MongoDB",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "MySQL",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "Oracle DB",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "PostgreSQL",
-        "link": "https://engineering.zalando.com/tags/postgresql.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "Redis",
-        "link": "https://engineering.zalando.com/tags/redis.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 2,
-        "label": "RocksDB",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "Solr",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 3,
-        "label": "ZooKeeper",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 2,
-        "ring": 0,
-        "label": "etcd",
-        "active": true,
-        "moved": 0
-      },
-      {
+    {
+        "description": "Hasura sits above our postgresql databases allowing us to access our data with a real time GraphQL API",
+        "moved": 0,
+        "label": "Hasura",
         "quadrant": 1,
-        "ring": 0,
-        "label": "AWS CloudFormation",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 0
+    },
+    {
+        "description": "Identity Server 4 is a framework that implements OAuth2 with OpenID Connect and provides the basis for our SSO and token management",
+        "moved": 0,
+        "label": "Identity Server 4",
+        "quadrant": 2,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Helm is a powerful tool we us to package and deploy some of our applications to our kubernetes cluster ",
+        "moved": 1,
+        "label": "Helm",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Terraform is an infrastructure as code tool that we leverage to ensure our infrastructure mangement is repeatable and fully reviewed ",
+        "moved": 1,
+        "label": "Terraform",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Postman helps our engineers build collections to test our APIs, integrate with financial institutions and ease development",
+        "moved": 0,
+        "label": "Postman",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "All our applications are deployed to our kubernetes clusters running in Azure. As a container orchastraction platform it allows us to scale and handle load with confidence",
+        "moved": 0,
+        "label": "Azure Kubernetes Service",
         "quadrant": 1,
-        "ring": 0,
-        "label": "AWS CloudFront",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 0
+    },
+    {
+        "description": "Potgresql is our relational database of choice and taking advantage of Azure's managed solution allows us to focus on our core product offerings",
+        "moved": 0,
+        "label": "Azure Managed Postgres",
         "quadrant": 1,
-        "ring": 1,
-        "label": "AWS Lambda",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 0
+    },
+    {
+        "description": "Tilt is the latest tool we're experimenting with to help manage deployment of our applications to our local development cluster",
+        "moved": 1,
+        "label": "Tilt",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Azure application insight is one of our solutions for monitoring and logging",
+        "moved": -1,
+        "label": "Azure App Insights",
+        "quadrant": 3,
+        "active": true,
+        "ring": 3
+    },
+    {
+        "description": "Kamus is a gitops, zero trust encryption and decryption tool for kubernetes. All our infrastructure and applications secrets are encrypted using kamus, allowing us to add them to source control and CI/CD  pipelines securely ",
+        "moved": -1,
+        "label": "Kamus",
         "quadrant": 1,
-        "ring": 0,
-        "label": "Amazon SageMaker",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 3
+    },
+    {
+        "description": "Datadog is another provider we utiilize to monitor and alert on our applications and infastructure. We also leverage datadog's tracing, logging and UX monitoring solutions.",
+        "moved": 1,
+        "label": "Datadog",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Kleene.ai is a data analytics took that aggregates, transforms, organizes and helps us gain insight into our data ",
+        "moved": 1,
+        "label": "Kleene",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Linear is our project management and issue tracking tool",
+        "moved": 0,
+        "label": "Linear",
+        "quadrant": 3,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "ScaleGrid is another of our providers handling the management of our postgres databases",
+        "moved": 0,
+        "label": "ScaleGrid",
         "quadrant": 1,
-        "ring": 0,
-        "label": "Docker",
-        "link": "https://engineering.zalando.com/tags/docker.html\"",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 3
+    },
+    {
+        "description": "React is a popular library for building UIs with a component based, declarative approach",
+        "moved": 0,
+        "label": "React",
+        "quadrant": 2,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Typescript is a superset of javascript and our main programming language at Stitch",
+        "moved": 0,
+        "label": "Typescript",
+        "quadrant": 2,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Docker is a containerization platform used to package up our applications for deployment to our kubernetes cluster",
+        "moved": 0,
+        "label": "Docker ",
         "quadrant": 1,
-        "ring": 0,
-        "label": "Kubernetes",
-        "link": "https://engineering.zalando.com/tags/kubernetes.html",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 0
+    },
+    {
+        "description": "Traefik at its core is a http reverse proxy and we use it within out k8s clusters to manage our networking layer",
+        "moved": 0,
+        "label": "Traefik ",
+        "quadrant": 3,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "OAuth2 (Open Authorization) is an industry standard for authentication",
+        "moved": 0,
+        "label": "OAuth2",
+        "quadrant": 2,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "OpenID Connect is an identity layer on top of OAuth2.0",
+        "moved": 0,
+        "label": "OpenID Connect",
+        "quadrant": 2,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of applications use the actor model, one of which using it to model a users bank session, benefiting from the actor models approach of isolating actors from one another. At Stitch we use https://nact.xyz developed by Natalie Cuthbert our CTO.",
+        "moved": 0,
+        "label": "Actor Model",
+        "quadrant": 2,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Github actions is is used as both a tool for maintaining our code quality standards as well as our CI/CD",
+        "moved": 0,
+        "label": "Github Actions",
+        "quadrant": 3,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Skaffold is a tool use for deploying applications to our local development cluster",
+        "moved": -1,
+        "label": "Skaffold",
+        "quadrant": 3,
+        "active": true,
+        "ring": 3
+    },
+    {
+        "description": "Linkerd is a service mesh providing enhanced security, observability and reliabiliy to kubernetes clusters",
+        "moved": 0,
+        "label": "Linkerd",
         "quadrant": 1,
-        "ring": 0,
-        "label": "Nginx",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 3
+    },
+    {
+        "description": "Azure functions is a serverless code solution",
+        "moved": 1,
+        "label": "Azure Functions",
         "quadrant": 1,
-        "ring": 0,
-        "label": "OpenTracing",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 1
+    },
+    {
+        "description": "Azure Cosmos DB is a fully managed NoSQL datastore we use in tandem with Azure Functions to provide low latency, highly scalable storage",
+        "moved": 1,
+        "label": "Cosmos Db",
         "quadrant": 1,
-        "ring": 3,
-        "label": "STUPS",
-        "link": "https://engineering.zalando.com/tags/stups.html",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 1
+    },
+    {
+        "description": "Azure Container Registry provides secure storage for our docker containers",
+        "moved": 0,
+        "label": "Azure Container Registry",
         "quadrant": 1,
-        "ring": 0,
-        "label": "Skipper",
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 0
+    },
+    {
+        "description": "Key Vault is Azure's secure key management solution",
+        "moved": 0,
+        "label": "Azure Key Vault",
         "quadrant": 1,
-        "ring": 2,
-        "label": "Slurm",
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 1,
-        "ring": 0,
-        "label": "ZMON",
+        "ring": 0
+    },
+    {
+        "description": "Koa is a simple, fast web framwork for node",
+        "moved": 0,
+        "label": "Koa",
+        "quadrant": 2,
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 3,
-        "label": "Clojure",
-        "link": "https://engineering.zalando.com/tags/clojure.html",
+        "ring": 0
+    },
+    {
+        "description": "Nextjs is a feature rich react framework",
+        "moved": 1,
+        "label": "NextJs",
+        "quadrant": 2,
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 1,
-        "label": "Dart",
+        "ring": 0
+    },
+    {
+        "description": "Decoders is a validation library we use for validating input and response data at runtime",
+        "moved": 0,
+        "label": "Decoders",
+        "quadrant": 2,
         "active": true,
-        "moved": 1
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Go",
-        "link": "https://engineering.zalando.com/tags/golang.html",
+        "ring": 0
+    },
+    {
+        "description": "React Hook Form is a performant react form library with developer friendly form validation",
+        "moved": 1,
+        "label": "React Hook Form",
+        "quadrant": 2,
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
+        "ring": 0
+    },
+    {
+        "description": "At Stitch maintain a monorepo codebase and use Turborepo as our build system",
+        "moved": 1,
+        "label": "Turbo Repo",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "Pnpm is a performative packet manager which is fast and mono repo friendly",
+        "moved": 1,
+        "label": "pnpm",
+        "quadrant": 3,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "GraphQL is a query language for APIs. At Stitch we use GraphQL extensively throughout out stack to describe and query our data.",
+        "moved": 0,
         "label": "GraphQL",
-        "link": "https://engineering.zalando.com/tags/graphql.html",
+        "quadrant": 2,
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 3,
-        "label": "Haskell",
-        "link": "https://engineering.zalando.com/tags/haskell.html",
+        "ring": 0
+    },
+    {
+        "description": "We use snowflake as a data lake which we then pull from to visualise and analyse our data",
+        "moved": 1,
+        "label": "Snowflake",
+        "quadrant": 1,
         "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 1
+    },
+    {
+        "description": "At Stitch we use Notion as our store of documentation, projects and customer stories",
+        "moved": 0,
+        "label": "Notion",
+        "quadrant": 3,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "At Stitch we practice a lean form of Agile. We run 2 week cycles with standups, reviews, grooming and retrospectives.",
+        "moved": 0,
+        "label": "Scrum",
         "quadrant": 0,
-        "ring": 0,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Cloudflare serves as our CDN, DNS and firewall",
+        "moved": 0,
+        "label": "Cloudflare",
+        "quadrant": 1,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Tailwind is a collection of CSS utility classes that helps us build responsive and maintainable UIs",
+        "moved": 0,
+        "label": "Tailwind CSS",
+        "quadrant": 2,
+        "active": true,
+        "ring": 1
+    },
+    {
+        "description": "K9s is a small lightweight cli tool we use in development to interact with our clusters",
+        "moved": 0,
+        "label": "k9s",
+        "quadrant": 3,
+        "active": true,
+        "ring": 2
+    },
+    {
+        "description": "Lens is another UI driven tool we use in development to interact with our clusters",
+        "moved": 0,
+        "label": "Lens",
+        "quadrant": 3,
+        "active": true,
+        "ring": 2
+    },
+    {
+        "description": "Blob storage is Azure's solution for storage of unstructured objects",
+        "moved": 0,
+        "label": "Azure Blob Storage",
+        "quadrant": 1,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "XState is a powerful framework for building finite state machines in Typescript",
+        "moved": 0,
+        "label": "XState",
+        "quadrant": 2,
+        "active": true,
+        "ring": 0
+    },
+    {
+        "description": "Karate makes test automation simple by providing mocks, UI automation and performance testing with support for GraphQL and HTTP",
+        "moved": 1,
+        "label": "Karate",
+        "quadrant": 2,
+        "active": true,
+        "ring": 2
+    },
+    {
+        "description": "",
+        "moved": 0,
         "label": "Java",
-        "link": "https://engineering.zalando.com/tags/java.html",
+        "quadrant": 2,
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "JavaScript",
-        "link": "https://engineering.zalando.com/tags/javascript.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Kotlin",
-        "link": "https://engineering.zalando.com/tags/kotlin.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "OpenAPI (Swagger)",
-        "link": "https://engineering.zalando.com/tags/openapi.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Python",
-        "link": "https://engineering.zalando.com/tags/python.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 2,
-        "label": "R",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 3,
-        "label": "Rust",
-        "link": "https://engineering.zalando.com/tags/rust.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Scala",
-        "link": "https://engineering.zalando.com/tags/scala.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "Swift",
-        "link": "https://engineering.zalando.com/tags/swift.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 0,
-        "ring": 0,
-        "label": "TypeScript",
-        "link": "https://engineering.zalando.com/tags/typescript.html",
-        "active": true,
-        "moved": 0
-      },
-      {
+        "ring": 1
+    },
+    {
+        "description": "Cypress is a javascript end-to-end testing framework with a focus on UI automation and CI integration",
+        "moved": 1,
+        "label": "Cypress",
         "quadrant": 3,
-        "ring": 1,
-        "label": "AWS Kinesis",
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "AWS SNS",
+        "ring": 3
+    },
+    {
+        "description": "Jest is a tool use for majority of our unit testing needs as it provides a simple interface with minimal configuration",
+        "moved": 0,
+        "label": "Jest",
+        "quadrant": 2,
         "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "AWS SQS",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "ActiveMQ",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 3,
-        "label": "HornetQ",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Kafka",
-        "link": "https://engineering.zalando.com/tags/apache-kafka.html",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 0,
-        "label": "Nakadi",
-        "link": "https://nakadi.docs.zalando.net",
-        "active": true,
-        "moved": 0
-      },
-      {
-        "quadrant": 3,
-        "ring": 1,
-        "label": "RabbitMQ",
-        "link": "https://engineering.zalando.com/tags/rabbitmq.html",
-        "active": true,
-        "moved": 0
-      }
-    ]
-  //ENTRIES
+        "ring": 0
+    }
+  ]
 });
 </script>
 
 <table>
 <tr>
-<td>
+  <td>
+    <h3>What is the Tech Radar?</h3>
+    <p>
+      The Stitch Tech Radar is a list of technologies, complemented by an assessment result, called ring assignment. We use four rings with the following semantics:
+    </p>
+  </td>
+  <td></td>
+</tr>
 
-<h3>What is the Tech Radar?</h3>
+<p></p>
+<tr>
+  <td>
+    <div class="row disp">
+      <img src="./assets/images/arrow.svg" width="15px" height="26px">
+      <label>Adopt</label>
+    </div>
+    <p class="item">
+      Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Stitch production environment, low risk and recommended to be widely used.
+    </p>
+  </td>
 
-<p>
-The Zalando Tech Radar is a list of technologies, complemented by an assessment result, called <em>ring assignment</em>. We use four rings with the following semantics:
-</p>
+  <td>
+    <div class="row disp">
+      <img src="./assets/images/arrow.svg" width="15px" height="26px">
+      <label>Trial</label>
+    </div>
+    <p class="item">
+      Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.
+    </p>
+  </td>
 
-<ul>
-<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Zalando production environment, low risk and recommended to be widely used.</li>
-<li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
-<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
-<li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
-</ul>
+</tr>
 
-</td><td>
+<tr>
+  <td>
+    <div class="row disp">
+      <img src="./assets/images/arrow.svg" width="15px" height="26px">
+      <label>Assess</label>
+    </div>
+    <p class="item">
+      Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.
+    </p>
+  </td>
 
-<h3>What is the purpose?</h3>
-
-<p>
-The Tech Radar is a tool to inspire and support Engineering teams at Zalando to pick the best technologies for new projects; it provides a platform to share knowledge and experience in technologies, to reflect on technology decisions and continuously evolve our technology landscape. Based on the <a href="https://www.thoughtworks.com/radar">pioneering work of ThoughtWorks</a>, our Tech Radar sets out the changes in technologies that are interesting in software development &mdash; changes that we think our engineering teams should pay attention to and use in their projects.
-</p>
-
-<h3>How do we maintain it?</h3>
-
-<p>
-The Tech Radar is maintained by our <em>Principal Engineers</em> &mdash; who facilitate and drive the technology selection discussions at Zalando across the Engineering Community. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on. The Tech Radar is open for contribution for all Engineering teams at Zalando and depends on their active participation to share lessons learned, pitfalls, and contribute to good practices on using the technologies.<br/>
-</p>
-
-<p>
-Check out our <a href="https://engineering.zalando.com/tags/tech-radar.html">Engineering Blog</a> for more information on how we approach Technology Selection and use the Tech Radar at Zalando.
-</p>
-
-<p>
-<em>BTW, if you would like to create your own Tech Radar &mdash; we have <a href="https://github.com/zalando/tech-radar">open sourced the code</a> to generate this visualization.</em>
-</p>
-
-</td></tr>
+  <td>
+    <div class="row disp">
+      <img src="./assets/images/arrow.svg" width="15px" height="26px">
+      <label>Hold</label>
+    </div>
+    <p class="item">
+      Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.
+    </p>
+  </td>
+</tr>
 </table>
 
 </body>

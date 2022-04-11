@@ -1,9 +1,9 @@
 body {
-  font-family: 'Source Sans Pro', arial, helvetica, sans-serif;
+  font-family: 'Rational Text';
   padding-bottom: 50px;
 }
 h3 {
-  margin-top: 50px;
+  margin-top: 25px;
 }
 li {
   margin: 25px 50px 0 0;
@@ -16,4 +16,94 @@ td {
   width: 50%;
   vertical-align: top;
   padding-right: 60px;
+}
+
+p {
+  font-size: 14px;
+}
+
+@font-face {
+  font-family: 'Rational Text';
+  src: url('/assets/fonts/RationalText-Book.woff2') format('woff2'),
+      url('/assets/fonts/RationalText-Book.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rational Text Medium';
+  src: url('/assets/fonts/RationalText-Medium.woff2') format('woff2'),
+      url('/assets/fonts/RationalText-Medium.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rational TW Text';
+  src: url('/assets/fonts/RationalTWText-Book.woff2') format('woff2'),
+      url('/assets/fonts/RationalTWText-Book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Reckless Neue';
+  src: url('/assets/fonts/RecklessNeue-Book.woff2') format('woff2'),
+      url('/assets/fonts/RecklessNeue-Book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.disp {
+  margin-top: 10px;
+  display: flex;
+}
+
+label { 
+  color: #911FFF;
+  margin-top: 3px;
+  margin-left: 5px;
+  font-size: 15px;
+  font-family: "Rational Text Medium";
+}
+
+.item {
+  margin-top: 8px;
+  margin-left: 20px;
+}
+
+.pill {
+  border: none;
+  background-color: black;
+  color: #fff;
+  font-family: "Rational Text Medium";
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 11px;
+  display: inline-block;
+  margin: 43px 0px 0px 0px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.pill.title {
+  margin-left: 50px;
+}
+
+.pill.version {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  color: black;
+}
+
+.logo {
+  padding: 17px 54px 0px 0px;
+  float: right;
 }

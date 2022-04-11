@@ -58,13 +58,13 @@ function radar_visualization(config) {
     { x: -675, y: -420 };
 
   const footer_offset =
-    { x: -675, y: 420 };
+    { x: -660, y: 420 };
 
   const legend_offset = [
-    { x: 450, y: 90 },
-    { x: -675, y: 90 },
-    { x: -675, y: -310 },
-    { x: 450, y: -310 }
+    { x: 455, y: 55 },
+    { x: -660, y: 55 },
+    { x: -660, y: -345 },
+    { x: 450, y: -340 }
   ];
 
   function polar(cartesian) {
@@ -238,21 +238,40 @@ function radar_visualization(config) {
       .attr("cy", 0)
       .attr("r", rings[i].radius)
       .style("fill", "none")
-      .style("stroke", config.colors.grid)
+      .style("stroke", config.colors.circle)
       .style("stroke-width", 1);
-    if (config.print_layout) {
+    if (!(i === 0)) {
       grid.append("text")
         .text(config.rings[i].name)
-        .attr("y", -rings[i].radius + 62)
+        .attr("y", -rings[i].radius + 53)
         .attr("text-anchor", "middle")
-        .style("fill", "#e5e5e5")
-        .style("font-family", "Arial, Helvetica")
-        .style("font-size", "42px")
-        .style("font-weight", "bold")
+        .style("fill", "#D1CFD6")
+        .style("font-family", "Rational Text Medium")
+        .style("font-size", "27px")
+        .style("pointer-events", "none")
+        .style("user-select", "none");
+      grid.append("text")
+        .text(config.rings[i].name)
+        .attr("y", rings[i].radius - 35)
+        .attr("text-anchor", "middle")
+        .style("fill", "#D1CFD6")
+        .style("font-family", "Rational Text Medium")
+        .style("font-size", "27px")
         .style("pointer-events", "none")
         .style("user-select", "none");
     }
   }
+
+  grid.append("text")
+  .text(config.rings[0].name)
+  .attr("x", 0)
+  .attr("y", 8)
+  .attr("text-anchor", "middle")
+  .style("fill", "#D1CFD6")
+  .style("font-family", "Rational Text Medium")
+  .style("font-size", "27px")
+  .style("pointer-events", "none")
+  .style("user-select", "none");
 
   function legend_transform(quadrant, ring, index=null) {
     var dx = ring < 2 ? 0 : 120;
@@ -266,22 +285,27 @@ function radar_visualization(config) {
     );
   }
 
+  // function legend_transform_2(quadrant, ring, index, numLines) {
+  //   var dx = ring < 2 ? 0 : 120;
+  //   var dy = (index == null ? -16 : index * 12);
+  //   if (ring % 2 === 1) {
+  //     dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
+  //   }
+  //   return translate(
+  //     legend_offset[quadrant].x + dx,
+  //     legend_offset[quadrant].y + dy
+  //   );
+  // }
+
   // draw title and legend (only in print layout)
   if (config.print_layout) {
-
-    // title
-    radar.append("text")
-      .attr("transform", translate(title_offset.x, title_offset.y))
-      .text(config.title)
-      .style("font-family", "Arial, Helvetica")
-      .style("font-size", "34px");
 
     // footer
     radar.append("text")
       .attr("transform", translate(footer_offset.x, footer_offset.y))
       .text("▲ moved up     ▼ moved down")
       .attr("xml:space", "preserve")
-      .style("font-family", "Arial, Helvetica")
+      .style("font-family", "Rational Text Medium")
       .style("font-size", "10px");
 
     // legend
@@ -293,15 +317,14 @@ function radar_visualization(config) {
           legend_offset[quadrant].y - 45
         ))
         .text(config.quadrants[quadrant].name)
-        .style("font-family", "Arial, Helvetica")
-        .style("font-size", "18px");
+        .style("font-family", "Rational Text Medium")
+        .style("font-size", "19px");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
           .attr("transform", legend_transform(quadrant, ring))
           .text(config.rings[ring].name)
-          .style("font-family", "Arial, Helvetica")
+          .style("font-family", "Rational Text Medium")
           .style("font-size", "12px")
-          .style("font-weight", "bold");
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
           .enter()
@@ -309,15 +332,18 @@ function radar_visualization(config) {
                 .attr("href", function (d, i) {
                   return d.link ? d.link : "#"; // stay on same page if no link was provided
                 })
-            .append("text")
+            .append("foreignObject")
+              .attr("width", 200)
+              .attr("height", 20)
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d, i) { return d.id + ". " + d.label; })
-              .style("font-family", "Arial, Helvetica")
-              .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+              .append("xhtml:div")
+              .html(function(d,i) { return formatLegend(d,i)})
+              .style("font-family", "Rational Text Book")
+              .style("font-size", "12px")
       }
     }
   }
@@ -333,35 +359,99 @@ function radar_visualization(config) {
     .attr("y", 0)
     .style("opacity", 0)
     .style("pointer-events", "none")
-    .style("user-select", "none");
+    .style("user-select", "none")
   bubble.append("rect")
     .attr("rx", 4)
-    .attr("ry", 4)
-    .style("fill", "#333");
+    .attr("dy", 4)
+    .style("fill", "#17121F");
   bubble.append("text")
-    .style("font-family", "sans-serif")
+    .style("font-family", "Rational Text Book")
     .style("font-size", "10px")
-    .style("fill", "#fff");
+    .style("fill", "#FFFFFF")
+    .text("test");
   bubble.append("path")
     .attr("d", "M 0,0 10,0 5,8 z")
-    .style("fill", "#333");
+    .style("fill", "#17121F");
 
   function showBubble(d) {
     if (d.active || config.print_layout) {
+      // The actual text
       var tooltip = d3.select("#bubble text")
-        .text(d.label);
+        .attr("dy", -1)
+        .call(wrapBubbleText, [200, d.label, d.description])
       var bbox = tooltip.node().getBBox();
+      // The whole bubble
       d3.select("#bubble")
-        .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
-        .style("opacity", 0.8);
+        .attr("transform", translate(d.x - bbox.width / 2 - 15, d.y - bbox.height  - 30))
+        .style("opacity", 1)
+        .attr("dy", 1)
+      // The black rectangle background
       d3.select("#bubble rect")
-        .attr("x", -5)
-        .attr("y", -bbox.height)
-        .attr("width", bbox.width + 10)
-        .attr("height", bbox.height + 4);
+        .attr("x", 0 )
+        .attr("y", -10)
+        .attr("width", bbox.width + 30)
+        .attr("height", bbox.height + 20)
+      // The down arrow
       d3.select("#bubble path")
-        .attr("transform", translate(bbox.width / 2 - 5, 3));
+        .attr("transform", translate(bbox.width / 2 + 10, bbox.height + 9));
     }
+  }
+
+  function numLines(label, charLimit){
+    return Math.ceil(label.length / charLimit)
+  }
+
+  function formatLegend(data, index){
+    var label = data.label
+    var id = data.id < 10 ? "0"+ data.id : data.id
+    var labelWords = label.split()
+    var charLength = 20
+    var div = "<div>"
+    var line = [id + ". "]
+    while (word = labelWords.pop()) {
+      line.push(word);
+      if (line.join(" ").length > charLength) {
+        console.log("Here")
+        // Add word(s) to sentence
+        div = div + line.join(" ")
+        // clear the line
+        line = []
+      }
+    }
+    return div + line.join(" ") + "</div>"
+
+  }
+
+  function wrapBubbleText(text, data) {
+    text.each(function() {
+      var text = d3.select(this),
+          description = data[2],
+          words = description.split(/\s+/).reverse(),
+          title = data[1],
+          word,
+          line = [],
+          lineHeight = 1.1, // ems
+          y = text.attr("y"),
+          dy = parseFloat(text.attr("dy"))
+          titleSpacing = 0.5
+
+      text.node().innerHTML = ''
+      // Add the title
+      tspan = text.append("tspan").attr("x", 15).attr("y", y + 20).attr("dy", dy + "em").text(title).attr("font-family", "Rational Text Medium");
+      dy = dy + lineHeight + titleSpacing
+      tspan = text.append("tspan").attr("x", 15).attr("y", y + 20).attr("dy", dy + "em");
+      while (word = words.pop()) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > data[0]) {
+          dy = dy + lineHeight
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text.append("tspan").attr("x", 15).attr("y", y + 20).attr("dy", dy + "em").text(word);
+        }
+      }
+    });
   }
 
   function hideBubble(d) {
@@ -372,14 +462,12 @@ function radar_visualization(config) {
 
   function highlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("filter", "url(#solid)");
-    legendItem.setAttribute("fill", "white");
+    legendItem.setAttribute("color", "#911FFF");
   }
 
   function unhighlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.removeAttribute("filter");
-    legendItem.removeAttribute("fill");
+    legendItem.setAttribute("color", "#17121F");
   }
 
   // draw blips on radar
@@ -405,12 +493,13 @@ function radar_visualization(config) {
     // blip shape
     if (d.moved > 0) {
       blip.append("path")
-        .attr("d", "M -11,5 11,5 0,-13 z") // triangle pointing up
+        .attr("d",  "m -2.3807652,-11.744401 c 1.1378619,-1.931959 4.0503168,-1.93196 5.1881787,0 L 11.111864,2.3555527 C 12.227941,4.2503864 10.794168,6.5917241 8.5178039,6.5917241 H -8.0911455 c -2.2763845,0 -3.7101335,-2.3413377 -2.5941085,-4.2361714 z") // triangle pointing up
         .style("fill", d.color);
     } else if (d.moved < 0) {
       blip.append("path")
-        .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
-        .style("fill", d.color);
+        .attr("d", "m 2.524639,10.273073 c -0.921977,1.603014 -3.28185752,1.603014 -4.2038819,0 L -8.4080917,-1.4262573 c -0.9042866,-1.5722569 0.2574402,-3.5149428 2.1019363,-3.5149428 l 13.4577644,1.3e-6 c 1.844472,0 3.006218,1.9426846 2.101893,3.514937 z") // triangle pointing down
+        .style("fill", d.color)
+
     } else {
       blip.append("circle")
         .attr("r", 9)
@@ -419,13 +508,14 @@ function radar_visualization(config) {
 
     // blip text
     if (d.active || config.print_layout) {
-      var blip_text = config.print_layout ? d.id : d.label.match(/[a-z]/i);
+      var blip_text = d.id < 10 ? "0" + d.id : d.id;
+      var fill = d.ring === 3 ? "#911FFF" : "#fff";
       blip.append("text")
         .text(blip_text)
         .attr("y", 3)
         .attr("text-anchor", "middle")
-        .style("fill", "#fff")
-        .style("font-family", "Arial, Helvetica")
+        .style("fill", fill)
+        .style("font-family", "Rational Text Medium")
         .style("font-size", function(d) { return blip_text.length > 2 ? "8px" : "9px"; })
         .style("pointer-events", "none")
         .style("user-select", "none");
