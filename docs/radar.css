@@ -63,7 +63,7 @@ p {
   display: flex;
 }
 
-label { 
+.bullet { 
   color: #911FFF;
   margin-top: 3px;
   margin-left: 5px;

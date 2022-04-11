@@ -54,9 +54,6 @@ function radar_visualization(config) {
     { radius: 400 }
   ];
 
-  const title_offset =
-    { x: -675, y: -420 };
-
   const footer_offset =
     { x: -660, y: 420 };
 
@@ -273,30 +270,17 @@ function radar_visualization(config) {
   .style("pointer-events", "none")
   .style("user-select", "none");
 
-  function legend_transform(quadrant, ring, index=null) {
+  function legend_transform(quadrant, ring, index=null, x_offset=0, y_offset=0) {
     var dx = ring < 2 ? 0 : 120;
     var dy = (index == null ? -16 : index * 12);
     if (ring % 2 === 1) {
-      dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
+      dy = dy + 85 + segmented[quadrant][ring-1].length * 12;
     }
     return translate(
-      legend_offset[quadrant].x + dx,
-      legend_offset[quadrant].y + dy
+      legend_offset[quadrant].x + dx + x_offset,
+      legend_offset[quadrant].y + dy + y_offset
     );
   }
-
-  // function legend_transform_2(quadrant, ring, index, numLines) {
-  //   var dx = ring < 2 ? 0 : 120;
-  //   var dy = (index == null ? -16 : index * 12);
-  //   if (ring % 2 === 1) {
-  //     dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
-  //   }
-  //   return translate(
-  //     legend_offset[quadrant].x + dx,
-  //     legend_offset[quadrant].y + dy
-  //   );
-  // }
-
   // draw title and legend (only in print layout)
   if (config.print_layout) {
 
@@ -321,29 +305,46 @@ function radar_visualization(config) {
         .style("font-size", "19px");
       for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring))
+          .attr("transform", legend_transform(quadrant, ring, ))
           .text(config.rings[ring].name)
           .style("font-family", "Rational Text Medium")
           .style("font-size", "12px")
-        legend.selectAll(".legend" + quadrant + ring)
-          .data(segmented[quadrant][ring])
-          .enter()
-            .append("a")
-                .attr("href", function (d, i) {
-                  return d.link ? d.link : "#"; // stay on same page if no link was provided
-                })
-            .append("foreignObject")
-              .attr("width", 200)
-              .attr("height", 20)
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
-              .attr("class", "legend" + quadrant + ring)
-              .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
-              .append("xhtml:div")
-              .html(function(d,i) { return formatLegend(d,i)})
-              .style("font-family", "Rational Text Book")
-              .style("font-size", "12px")
+        legend.append("foreignObject")
+            .attr("width", 110)
+            .attr("height", segmented[quadrant][ring].length * 20)
+            .attr("transform", function(d, i) { return legend_transform(quadrant, ring, 0, 3); })
+            .attr("class", "legend" + quadrant + ring)
+            .append("xhtml:div")
+            .html(formatLegend(segmented[quadrant][ring]))
+            .style("font-family", "Rational Text Book")
+            .style("font-size", "12px")
+        for(legendItem of segmented[quadrant][ring]){
+          console.log(legendItem.id);
+          document.getElementById("legendItem" + legendItem.id)
+          .onmouseover = (function(d) { return function() {showBubble(d); highlightLegendItem(d)}})(legendItem)
+          document.getElementById("legendItem" + legendItem.id)
+          .onmouseout = (function(d) { return function() { hideBubble(d); unhighlightLegendItem(d)}})(legendItem)
+        }
+
+    
+          // .data(segmented[quadrant][ring])
+          // .enter()
+          //   .append("a")
+          //       .attr("href", function (d, i) {
+          //         return d.link ? d.link : "#"; // stay on same page if no link was provided
+          //       })
+          //   .append("foreignObject")
+          //     .attr("width", 200)
+          //     .attr("height", 20)
+          //     .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
+          //     .attr("class", "legend" + quadrant + ring)
+          //     .attr("id", function(d, i) { return "legendItem" + d.id; })
+          //     .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
+          //     .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+          //     .append("xhtml:div")
+          //     .html(function(d,i) { return formatLegend(d,i)})
+          //     .style("font-family", "Rational Text Book")
+          //     .style("font-size", "12px")
       }
     }
   }
@@ -401,25 +402,34 @@ function radar_visualization(config) {
     return Math.ceil(label.length / charLimit)
   }
 
-  function formatLegend(data, index){
-    var label = data.label
-    var id = data.id < 10 ? "0"+ data.id : data.id
-    var labelWords = label.split()
-    var charLength = 20
-    var div = "<div>"
-    var line = [id + ". "]
-    while (word = labelWords.pop()) {
-      line.push(word);
-      if (line.join(" ").length > charLength) {
-        console.log("Here")
-        // Add word(s) to sentence
-        div = div + line.join(" ")
-        // clear the line
-        line = []
-      }
-    }
-    return div + line.join(" ") + "</div>"
+  // function formatLegend(data, index){
+  //   var label = data.label
+  //   var id = data.id < 10 ? "0"+ data.id : data.id
+  //   var labelWords = label.split()
+  //   var charLength = 20
+  //   var div = "<div>"
+  //   var line = [id + ". "]
+  //   while (word = labelWords.pop()) {
+  //     line.push(word);
+  //     if (line.join(" ").length > charLength) {
+  //       console.log("Here")
+  //       // Add word(s) to sentence
+  //       div = div + line.join(" ")
+  //       // clear the line
+  //       line = []
+  //     }
+  //   }
+  //   return div + line.join(" ") + "</div>"
+  // }
 
+  function formatLegend(data){
+  //  console.log(data)
+   div = "<div>"
+   for(item of data){
+      // console.log(item)
+       div = div + `<label id="legendItem${item.id}"> ${(item.id < 10 ? "0"+ item.id : item.id )}. ${item.label} </label><br>`
+   }
+   return div + "</div>"
   }
 
   function wrapBubbleText(text, data) {
@@ -462,12 +472,12 @@ function radar_visualization(config) {
 
   function highlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("color", "#911FFF");
+    legendItem.setAttribute("style", "color:#911FFF");
   }
 
   function unhighlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("color", "#17121F");
+    legendItem.setAttribute("style", "color:#17121F");
   }
 
   // draw blips on radar
