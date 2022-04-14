@@ -303,48 +303,26 @@ function radar_visualization(config) {
         .text(config.quadrants[quadrant].name)
         .style("font-family", "Rational Text Medium")
         .style("font-size", "19px");
-      for (var ring = 0; ring < 4; ring++) {
-        legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring, ))
-          .text(config.rings[ring].name)
-          .style("font-family", "Rational Text Medium")
+      legend.append("foreignObject")
+          .attr("width", 400)
+          .attr("height", 400)
+          .attr("transform", translate(
+            legend_offset[quadrant].x,
+            legend_offset[quadrant].y - 30
+          ))
+          .attr("class", "legend" + quadrant)
+          .append("xhtml:div")
+          .html(formatLegend(segmented[quadrant]))
+          .style("font-family", "Rational Text Book")
           .style("font-size", "12px")
-        legend.append("foreignObject")
-            .attr("width", 110)
-            .attr("height", segmented[quadrant][ring].length * 20)
-            .attr("transform", function(d, i) { return legend_transform(quadrant, ring, 0, 3); })
-            .attr("class", "legend" + quadrant + ring)
-            .append("xhtml:div")
-            .html(formatLegend(segmented[quadrant][ring]))
-            .style("font-family", "Rational Text Book")
-            .style("font-size", "12px")
-        for(legendItem of segmented[quadrant][ring]){
-          console.log(legendItem.id);
-          document.getElementById("legendItem" + legendItem.id)
-          .onmouseover = (function(d) { return function() {showBubble(d); highlightLegendItem(d)}})(legendItem)
-          document.getElementById("legendItem" + legendItem.id)
-          .onmouseout = (function(d) { return function() { hideBubble(d); unhighlightLegendItem(d)}})(legendItem)
+      for(quad of segmented[quadrant]){
+        for (item of quad) {
+          console.log(item);
+          document.getElementById("legendItem" + item.id)
+          .onmouseover = (function(d) { return function() {showBubble(d); highlightLegendItem(d)}})(item)
+          document.getElementById("legendItem" + item.id)
+          .onmouseout = (function(d) { return function() { hideBubble(d); unhighlightLegendItem(d)}})(item)
         }
-
-    
-          // .data(segmented[quadrant][ring])
-          // .enter()
-          //   .append("a")
-          //       .attr("href", function (d, i) {
-          //         return d.link ? d.link : "#"; // stay on same page if no link was provided
-          //       })
-          //   .append("foreignObject")
-          //     .attr("width", 200)
-          //     .attr("height", 20)
-          //     .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
-          //     .attr("class", "legend" + quadrant + ring)
-          //     .attr("id", function(d, i) { return "legendItem" + d.id; })
-          //     .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-          //     .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
-          //     .append("xhtml:div")
-          //     .html(function(d,i) { return formatLegend(d,i)})
-          //     .style("font-family", "Rational Text Book")
-          //     .style("font-size", "12px")
       }
     }
   }
@@ -422,14 +400,39 @@ function radar_visualization(config) {
   //   return div + line.join(" ") + "</div>"
   // }
 
-  function formatLegend(data){
-  //  console.log(data)
+  function buildLines(data){
    div = "<div>"
    for(item of data){
-      // console.log(item)
-       div = div + `<label id="legendItem${item.id}"> ${(item.id < 10 ? "0"+ item.id : item.id )}. ${item.label} </label><br>`
+       div = div + `<label class="legendItem" id="legendItem${item.id}"> ${(item.id < 10 ? "0"+ item.id : item.id )}. ${item.label} </label><br>`
+   }
+   if(data.length === 0){
+     div = div + "-"
    }
    return div + "</div>"
+  }
+
+  function formatLegend(data){
+   return `<table style="width:65%">
+          <tr>
+            <td class="ringLegend">Adopt</td>
+            <td class="ringLegend">Assess</td>
+          </tr>
+          <tr>
+            <td style="width: 100px; vertical-align:top">${buildLines(data[0])}</td>
+            <td style="width: 100px; vertical-align:top">${buildLines(data[1])}</td>
+          </tr>
+          <tr>
+          <td></td>
+          </tr>
+          <tr style="padding-top:10px">
+            <td class="ringLegend">Trial</td>
+            <td class="ringLegend">Hold</td>
+          </tr>
+          <tr>
+            <td style="width: 100px; vertical-align:top">${buildLines(data[2])}</td>
+            <td style="width: 100px; vertical-align:top">${buildLines(data[3])}</td>
+          </tr>
+        </table>`
   }
 
   function wrapBubbleText(text, data) {

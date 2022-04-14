@@ -8,11 +8,11 @@ h3 {
 li {
   margin: 25px 50px 0 0;
 }
-table {
+table.blurb {
   width: 1400px;
   margin: 0 50px 0 50px;
 }
-td {
+td.blurb {
   width: 50%;
   vertical-align: top;
   padding-right: 60px;
@@ -101,6 +101,16 @@ p {
   border-width: 1px;
   border-color: black;
   color: black;
+}
+
+.legendItem {
+  font-family: "Rational Text Book";
+  font-size: 13px;
+}
+
+.ringLegend {
+  font-family: "Rational Text Medium";
+  font-size: 15px;
 }
 
 .logo {
