@@ -18,8 +18,12 @@ td.blurb {
   padding-right: 60px;
 }
 
+.header {
+  margin-bottom: 30px;
+}
+
 p {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 @font-face {
@@ -118,8 +122,8 @@ p {
 }
 
 .legendItem {
-  font-family: "Rational Text Book";
-  font-size: 13px;  
+  font-family: "Rational Text";
+  font-size: 11px;
 }
 
 .legendItem.text {
@@ -132,10 +136,11 @@ p {
 
 .ringLegend {
   font-family: "Rational Text Medium";
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .logo {
   padding: 17px 54px 0px 0px;
-  float: right;
+  position: absolute;
+  left: 1250px;
 }
