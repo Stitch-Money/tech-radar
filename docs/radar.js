@@ -283,7 +283,6 @@ function radar_visualization(config) {
   }
   // draw title and legend (only in print layout)
   if (config.print_layout) {
-
     // footer
     radar.append("text")
       .attr("transform", translate(footer_offset.x, footer_offset.y))
@@ -376,34 +375,14 @@ function radar_visualization(config) {
     }
   }
 
-  function numLines(label, charLimit){
-    return Math.ceil(label.length / charLimit)
+  function buildLabel(id, label){
+    return `<label class="legendItem" id="legendItem${id}"> ${(id < 10 ? "0"+ id : id )}. ${label} </label><br>`
   }
-
-  // function formatLegend(data, index){
-  //   var label = data.label
-  //   var id = data.id < 10 ? "0"+ data.id : data.id
-  //   var labelWords = label.split()
-  //   var charLength = 20
-  //   var div = "<div>"
-  //   var line = [id + ". "]
-  //   while (word = labelWords.pop()) {
-  //     line.push(word);
-  //     if (line.join(" ").length > charLength) {
-  //       console.log("Here")
-  //       // Add word(s) to sentence
-  //       div = div + line.join(" ")
-  //       // clear the line
-  //       line = []
-  //     }
-  //   }
-  //   return div + line.join(" ") + "</div>"
-  // }
 
   function buildLines(data){
    div = "<div>"
    for(item of data){
-       div = div + `<label class="legendItem" id="legendItem${item.id}"> ${(item.id < 10 ? "0"+ item.id : item.id )}. ${item.label} </label><br>`
+       div = div + buildLabel(item.id, item.label)
    }
    if(data.length === 0){
      div = div + "-"
@@ -414,8 +393,8 @@ function radar_visualization(config) {
   function formatLegend(data){
    return `<table style="width:65%">
           <tr>
-            <td class="ringLegend">Adopt</td>
-            <td class="ringLegend">Assess</td>
+            <td class="ringLegend">${config.rings[0]["name"]}</td>
+            <td class="ringLegend">${config.rings[1]["name"]}</td>
           </tr>
           <tr>
             <td style="width: 100px; vertical-align:top">${buildLines(data[0])}</td>
@@ -425,8 +404,8 @@ function radar_visualization(config) {
           <td></td>
           </tr>
           <tr style="padding-top:10px">
-            <td class="ringLegend">Trial</td>
-            <td class="ringLegend">Hold</td>
+            <td class="ringLegend">${config.rings[2]["name"]}</td>
+            <td class="ringLegend">${config.rings[3]["name"]}</td>
           </tr>
           <tr>
             <td style="width: 100px; vertical-align:top">${buildLines(data[2])}</td>
@@ -510,7 +489,7 @@ function radar_visualization(config) {
         .style("fill", d.color);
     } else if (d.moved < 0) {
       blip.append("path")
-        .attr("d", "m 2.524639,10.273073 c -0.921977,1.603014 -3.28185752,1.603014 -4.2038819,0 L -8.4080917,-1.4262573 c -0.9042866,-1.5722569 0.2574402,-3.5149428 2.1019363,-3.5149428 l 13.4577644,1.3e-6 c 1.844472,0 3.006218,1.9426846 2.101893,3.514937 z") // triangle pointing down
+        .attr("d", "m 2.5422079,11.308501 c -1.1378619,1.931959 -4.0503168,1.93196 -5.1881787,0 L -10.950421,-2.7914534 c -1.116077,-1.8948337 0.317696,-4.2361717 2.5940598,-4.2361717 H 8.2525885 c 2.2763845,0 3.7101335,2.341338 2.5941085,4.2361717 z") // triangle pointing down
         .style("fill", d.color)
 
     } else {
