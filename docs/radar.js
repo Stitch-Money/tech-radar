@@ -316,11 +316,12 @@ function radar_visualization(config) {
           .style("font-size", "12px")
       for(quad of segmented[quadrant]){
         for (item of quad) {
-          console.log(item);
-          document.getElementById("legendItem" + item.id)
-          .onmouseover = (function(d) { return function() {showBubble(d); highlightLegendItem(d)}})(item)
-          document.getElementById("legendItem" + item.id)
-          .onmouseout = (function(d) { return function() { hideBubble(d); unhighlightLegendItem(d)}})(item)
+          for(element of ["legendItemText","legendItemNumber"]){
+            document.getElementById(element + item.id)
+            .onmouseover = (function(d) { return function() {showBubble(d); highlightLegendItem(d)}})(item)
+            document.getElementById(element + item.id)
+            .onmouseout = (function(d) { return function() { hideBubble(d); unhighlightLegendItem(d)}})(item)
+          }
         }
       }
     }
@@ -375,15 +376,21 @@ function radar_visualization(config) {
     }
   }
 
-  function buildLabel(id, label){
-    return `<label class="legendItem" id="legendItem${id}"> ${(id < 10 ? "0"+ id : id )}. ${label} </label><br>`
+  function buildLegendItem(id, label){
+    return `
+    <div class="legendItemBox">
+      <label class="legendItem number" id="legendItemNumber${id}">${(id < 10 ? "0"+ id : id )}.</label>
+      <label class="legendItem text" id="legendItemText${id}"> ${label}</label>
+    </div> `
   }
+
 
   function buildLines(data){
    div = "<div>"
    for(item of data){
-       div = div + buildLabel(item.id, item.label)
+       div = div + buildLegendItem(item.id, item.label)
    }
+   // If there are no items in the list just add a -
    if(data.length === 0){
      div = div + "-"
    }
@@ -391,14 +398,14 @@ function radar_visualization(config) {
   }
 
   function formatLegend(data){
-   return `<table style="width:65%">
+   return `<table class="legend">
           <tr>
             <td class="ringLegend">${config.rings[0]["name"]}</td>
             <td class="ringLegend">${config.rings[1]["name"]}</td>
           </tr>
           <tr>
-            <td style="width: 100px; vertical-align:top">${buildLines(data[0])}</td>
-            <td style="width: 100px; vertical-align:top">${buildLines(data[1])}</td>
+            <td class="legendQuadrant">${buildLines(data[0])}</td>
+            <td class="legendQuadrant">${buildLines(data[1])}</td>
           </tr>
           <tr>
           <td></td>
@@ -408,8 +415,8 @@ function radar_visualization(config) {
             <td class="ringLegend">${config.rings[3]["name"]}</td>
           </tr>
           <tr>
-            <td style="width: 100px; vertical-align:top">${buildLines(data[2])}</td>
-            <td style="width: 100px; vertical-align:top">${buildLines(data[3])}</td>
+            <td class="legendQuadrant">${buildLines(data[2])}</td>
+            <td class="legendQuadrant">${buildLines(data[3])}</td>
           </tr>
         </table>`
   }
@@ -453,13 +460,19 @@ function radar_visualization(config) {
   }
 
   function highlightLegendItem(d) {
-    var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("style", "color:#911FFF");
+    
+    var legendItemText = document.getElementById("legendItemText" + d.id);
+    var legendItemNumber = document.getElementById("legendItemNumber" + d.id);
+    legendItemText.setAttribute("style", `color:${config.legend.item.text.highlighted_color}`);
+    legendItemNumber.setAttribute("style", `color:${config.legend.item.number.highlighted_color}`);
   }
 
   function unhighlightLegendItem(d) {
-    var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("style", "color:#17121F");
+
+    var legendItemText = document.getElementById("legendItemText" + d.id);
+    var legendItemNumber = document.getElementById("legendItemNumber" + d.id);
+    legendItemText.setAttribute("style", `color:${config.legend.item.text.unhighlighted_color}`);
+    legendItemNumber.setAttribute("style", `color:${config.legend.item.number.unhighlighted_color}`);
   }
 
   // draw blips on radar

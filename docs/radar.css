@@ -103,9 +103,31 @@ p {
   color: black;
 }
 
+.legend {
+  width: 65%;
+}
+
+.legendQuadrant {
+  width: 100px;
+  vertical-align: top;
+}
+
+.legendItemBox { 
+  display: flex;
+  flex-direction: row;
+}
+
 .legendItem {
   font-family: "Rational Text Book";
-  font-size: 13px;
+  font-size: 13px;  
+}
+
+.legendItem.text {
+  margin-right: 8px;
+}
+
+.legendItem.number {
+  margin-right: 5px;
 }
 
 .ringLegend {

@@ -48,6 +48,18 @@ radar_visualization({
     { name: "Assess", color: "#B66BFF" },
     { name: "Hold", color: "#F4E9FF" }
   ],
+  legend: {
+      item: {
+          text: {
+            highlighted_color: "#911FFF",
+            unhighlighted_color: "#17121F"
+          },
+          number: {
+            highlighted_color: "#911FFF",
+            unhighlighted_color: "#17121F"
+        }
+      },
+  },
   print_layout: true,
   //ENTRIES
   entries: [
@@ -61,7 +73,7 @@ radar_visualization({
     },
     {
         "quadrant": 2,
-        "ring": 2,
+        "ring": 1,
         "label": "Identity Server 4",
         "active": true,
         "description": "Identity Server 4 is a framework that implements OAuth2 with OpenID Connect and provides the basis for our SSO and token management",
@@ -69,7 +81,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Helm",
         "active": true,
         "description": "Helm is a powerful tool we use to package and deploy some of our applications to our kubernetes clusters",
@@ -77,7 +89,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Terraform",
         "active": true,
         "description": "Terraform is an infrastructure as code tool that we leverage to ensure our infrastructure management is repeatable and changes managed ",
@@ -85,7 +97,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Postman",
         "active": true,
         "description": "Postman helps our engineers build collections to test our APIs, integrate with financial institutions and ease development",
@@ -109,7 +121,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Tilt",
         "active": true,
         "description": "Tilt is the latest tool we're experimenting with to help manage deployment of our applications to our local development cluster",
@@ -133,7 +145,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Datadog",
         "active": true,
         "description": "Datadog is another provider we utilize to improve observability into our applications and infrastructure. We leverage datadog's tracing, logging and UX monitoring solutions.",
@@ -141,7 +153,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Kleene",
         "active": true,
         "description": "Kleene.ai is a data analytics tool for aggregating and transforming our data and forms part of our analytics pipeline",
@@ -245,7 +257,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 2,
+        "ring": 1,
         "label": "Azure Functions",
         "active": true,
         "description": "Azure functions is a serverless code platform",
@@ -253,7 +265,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 2,
+        "ring": 1,
         "label": "Cosmos Db",
         "active": true,
         "description": "Azure Cosmos DB is a fully managed NoSQL datastore we use in tandem with Azure Functions to provide low latency, highly scalable storage",
@@ -269,7 +281,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 2,
+        "ring": 1,
         "label": "Azure Key Vault",
         "active": true,
         "description": "Key Vault is Azure's secure key management solution",
@@ -285,7 +297,7 @@ radar_visualization({
     },
     {
         "quadrant": 2,
-        "ring": 2,
+        "ring": 1,
         "label": "NextJs",
         "active": true,
         "description": "Nextjs is a feature rich react framework",
@@ -301,7 +313,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Turbo Repo",
         "active": true,
         "description": "At Stitch we maintain a monorepo codebase and use Turborepo as our build system",
@@ -309,7 +321,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 2,
+        "ring": 1,
         "label": "Pnpm",
         "active": true,
         "description": "Pnpm is a performative packet manager which is fast and mono repo friendly",
@@ -325,7 +337,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 2,
+        "ring": 1,
         "label": "Snowflake",
         "active": true,
         "description": "At Stitch we use Snowflake's data lake capabilities and forms part of our data analytics pipeline used for pulling data from to visualise and analyse",
@@ -357,7 +369,7 @@ radar_visualization({
     },
     {
         "quadrant": 2,
-        "ring": 2,
+        "ring": 1,
         "label": "Tailwind CSS",
         "active": true,
         "description": "Tailwind is a collection of CSS utility classes that helps us build responsive and maintainable UIs",
@@ -365,7 +377,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 1,
+        "ring": 2,
         "label": "k9s",
         "active": true,
         "description": "K9s is a small lightweight cli tool we use in development to interact with our clusters",
@@ -373,7 +385,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 1,
+        "ring": 2,
         "label": "Lens",
         "active": true,
         "description": "Lens is a UI driven tool we use in development to interact with our clusters",
@@ -389,7 +401,7 @@ radar_visualization({
     },
     {
         "quadrant": 2,
-        "ring": 2,
+        "ring": 1,
         "label": "XState",
         "active": true,
         "description": "XState is a powerful framework for building finite state machines in Typescript",
@@ -397,7 +409,7 @@ radar_visualization({
     },
     {
         "quadrant": 2,
-        "ring": 1,
+        "ring": 2,
         "label": "Karate",
         "active": true,
         "description": "Karate makes test automation simple by providing mocks, UI automation and performance testing with support for GraphQL and HTTP",
@@ -405,7 +417,7 @@ radar_visualization({
     },
     {
         "quadrant": 2,
-        "ring": 2,
+        "ring": 1,
         "label": "Java",
         "active": true,
         "description": "Java is a widely used object-oriented programming language we use mostly for our testing frameworks",
@@ -429,7 +441,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 2,
         "label": "BullMQ",
         "active": true,
         "description": "BullMQ is a reliable, stable and scalable queuing system backed by Redis",
@@ -437,7 +449,7 @@ radar_visualization({
     },
     {
         "quadrant": 3,
-        "ring": 1,
+        "ring": 2,
         "label": "Sealed Secrets",
         "active": true,
         "description": "Sealed secrets is a tool to encrypt secrets for storage in source control which are decrypted by a target cluster",
@@ -445,7 +457,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 2,
         "label": "Temporal",
         "active": true,
         "description": "Temporal is a platform for running reliable and scalable distributed cloud applications",
@@ -477,7 +489,7 @@ radar_visualization({
     },
     {
         "quadrant": 1,
-        "ring": 1,
+        "ring": 2,
         "label": "Redis",
         "active": true,
         "description": "Redis is an in memory datastore that can be persisted to disk and uses a key-value data model",
@@ -539,7 +551,7 @@ radar_visualization({
       <label class="bullet">Hold</label>
     </div>
     <p class="item">
-        These technologies are discouraged from use in new projects as we are not willing to invest in them further. They may not suit new requirements, have limited support or do not scale. <i>Hold</i> technologies should not be used for new projects and work is planned or ongoing to replace them in our stack. Technologies placed in <i>Hold</i> are done so in the context of Stitch and is not a statement about their viability in other organisations.
+        These technologies are discouraged from use in new projects as we are not willing to invest in them further. They may not suit new requirements, have limited community support or vulnerabilities. <i>Hold</i> technologies should not be used for new projects and work is planned or ongoing to replace them in our stack. Technologies placed in <i>Hold</i> are done so in the context of Stitch and is not a statement about their viability in other organisations.
     </p>
   </td>
 </tr>
