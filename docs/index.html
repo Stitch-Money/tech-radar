@@ -37,7 +37,7 @@ radar_visualization({
   title: "Stitch Tech Radar",
   version: "07.04.2022",
   quadrants: [
-    { name: "Techniques" },
+    { name: "Techniques and Patterns" },
     { name: "Platforms" },
     { name: "Languages and Frameworks" },
     { name: "Tools" },
@@ -84,7 +84,7 @@ radar_visualization({
         "ring": 1,
         "label": "Helm",
         "active": true,
-        "description": "Helm is a powerful tool we use to package and deploy some of our applications to our kubernetes clusters",
+        "description": "Helm is a powerful tool we use to package and deploy applications to our kubernetes clusters",
         "moved": 1
     },
     {
@@ -224,11 +224,19 @@ radar_visualization({
         "moved": 0
     },
     {
-        "quadrant": 2,
+        "quadrant": 0,
         "ring": 0,
         "label": "Actor Model",
         "active": true,
-        "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of our applications use the actor model benefiting from its graful error handling and isolation features. At Stitch we use https://nact.xyz developed by Natalie Cuthbert our CTO.",
+        "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of our applications use the actor model benefiting from its graceful error handling and isolation features",
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Nact",
+        "active": true,
+        "description": "Nact is a Typescript implementation of the Actor Model by our CTO Natalie Cuthbert",
         "moved": 0
     },
     {
@@ -493,6 +501,30 @@ radar_visualization({
         "label": "Redis",
         "active": true,
         "description": "Redis is an in memory datastore that can be persisted to disk and uses a key-value data model",
+        "moved": 0
+    },
+    {
+        "quadrant": 2,
+        "ring": 0,
+        "label": "Apollo Server",
+        "active": true,
+        "description": "Apollo server is a spec compliant GraphQL we use as an add on to Koa",
+        "moved": 0
+    },
+    {
+        "quadrant": 0,
+        "ring": 1,
+        "label": "Architecture Design Records",
+        "active": true,
+        "description": "Documentation of architecturally significant decisions, the context of how they were made and the consequences of their adoption",
+        "moved": 1
+    },
+    {
+        "quadrant": 0,
+        "ring": 0,
+        "label": "Postmortems",
+        "active": true,
+        "description": "Postmortem reports are intended to provide an audit of service downtime as well as provide a comprehensive set of preventative measures per incident - with the goal of minimising future service interruptions.",
         "moved": 0
     }
 ]

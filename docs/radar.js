@@ -27,7 +27,7 @@ function radar_visualization(config) {
   // source: https://stackoverflow.com/questions/521295
   var seed = 42;
   function random() {
-    var x = Math.sin(seed++) * 10000;
+    var x = Math.sin(seed++) * 1056;
     return x - Math.floor(x);
   }
 
