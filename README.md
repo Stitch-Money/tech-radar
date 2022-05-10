@@ -1,55 +1,14 @@
-# Motivation
+# Stitch Tech Radar
 
-At [Zalando](http://zalando.de), we maintain a [public Tech
-Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
-align on technology choices. It is based on the [pioneering work
-by ThoughtWorks](https://www.thoughtworks.com/radar).
+The Stitch radar, a fork of Zalando's [ Tech
+Radar](http://zalando.github.io/tech-radar/). This is used to present our technology choices keep track of ongoing experiments.
 
-This repository contains the code to generate the visualization:
-[`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)).
-Feel free to use and adapt it for your own purposes.
+## Adding tech to the radar
 
-## Usage
-
-1. include `d3.js` and `radar.js`:
-
-```html
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.6.js"></script>
-```
-
-2. insert an empty `svg` tag:
-
-```html
-<svg id="radar"></svg>
-```
-
-3. configure the radar visualization:
-
+Please add the item to the `entries` array. 
 ```js
 radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#fff",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "My Radar",
-  quadrants: [
-    { name: "Bottom Right" },
-    { name: "Bottom Left" },
-    { name: "Top Left" },
-    { name: "Top Right" }
-  ],
-  rings: [
-    { name: "INNER",  color: "#93c47d" },
-    { name: "SECOND", color: "#b7e1cd" },
-    { name: "THIRD",  color: "#fce8b2" },
-    { name: "OUTER",  color: "#f4c7c3" }
-  ],
-  print_layout: true,
+  ...
   entries: [
    {
       label: "Some Entry",
@@ -59,16 +18,9 @@ radar_visualization({
                             //  0 = not moved (circle)
                             //  1 = moved in  (triangle pointing up)
    },
-    // ...
   ]
 });
 ```
-
-Entries are positioned automatically so that they don't overlap.
-
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](http://zalando.github.io/tech-radar/).
-
 ## Local Development
 
 1. install dependencies with yarn (or npm):
