@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 
-// Copyright (c) 2017-2024 Zalando SE
+// Copyright (c) 2017 Zalando SE
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,29 +22,6 @@
 
 
 function radar_visualization(config) {
-
-  config.svg_id = config.svg || "radar";
-  config.width = config.width || 1450;
-  config.height = config.height || 1000;
-  config.colors = ("colors" in config) ? config.colors : {
-      background: "#fff",
-      grid: '#dddde0',
-      inactive: "#ddd"
-    };
-  config.print_layout = ("print_layout" in config) ? config.print_layout : true;
-  config.links_in_new_tabs = ("links_in_new_tabs" in config) ? config.links_in_new_tabs : true;
-  config.repo_url = config.repo_url || '#';
-  config.print_ring_descriptions_table = ("print_ring_descriptions_table" in config) ? config.print_ring_descriptions_table : false;
-  config.legend_offset = config.legend_offset || [
-    { x: 450, y: 90 },
-    { x: -675, y: 90 },
-    { x: -675, y: -310 },
-    { x: 450, y: -310 }
-  ]
-  config.title_offset = config.title_offset || { x: -675, y: -420 };
-  config.footer_offset = config.footer_offset || { x: -155, y: 450 };
-  config.legend_column_width = config.legend_column_width || 140
-  config.legend_line_height = config.legend_line_height || 10
 
   // custom random number generator, to make random sequence reproducible
   // source: https://stackoverflow.com/questions/521295
@@ -75,6 +52,19 @@ function radar_visualization(config) {
     { radius: 220 },
     { radius: 310 },
     { radius: 400 }
+  ];
+
+  const title_offset =
+    { x: -675, y: -420 };
+
+  const footer_offset =
+    { x: -675, y: 420 };
+
+  const legend_offset = [
+    { x: 450, y: 90 },
+    { x: -675, y: 90 },
+    { x: -675, y: -310 },
+    { x: 450, y: -310 }
   ];
 
   function polar(cartesian) {
@@ -165,7 +155,7 @@ function radar_visualization(config) {
 
   // partition entries according to segments
   var segmented = new Array(4);
-  for (let quadrant = 0; quadrant < 4; quadrant++) {
+  for (var quadrant = 0; quadrant < 4; quadrant++) {
     segmented[quadrant] = new Array(4);
     for (var ring = 0; ring < 4; ring++) {
       segmented[quadrant][ring] = [];
@@ -178,7 +168,7 @@ function radar_visualization(config) {
 
   // assign unique sequential id to each entry
   var id = 1;
-  for (quadrant of [2,3,1,0]) {
+  for (var quadrant of [2,3,1,0]) {
     for (var ring = 0; ring < 4; ring++) {
       var entries = segmented[quadrant][ring];
       entries.sort(function(a,b) { return a.label.localeCompare(b.label); })
@@ -201,27 +191,19 @@ function radar_visualization(config) {
     ].join(" ");
   }
 
-  // adjust with config.scale.
-  config.scale = config.scale || 1;
-  var scaled_width = config.width * config.scale;
-  var scaled_height = config.height * config.scale;
-
   var svg = d3.select("svg#" + config.svg_id)
     .style("background-color", config.colors.background)
-    .attr("width", scaled_width)
-    .attr("height", scaled_height);
+    .attr("width", config.width)
+    .attr("height", config.height);
 
   var radar = svg.append("g");
   if ("zoomed_quadrant" in config) {
     svg.attr("viewBox", viewbox(config.zoomed_quadrant));
   } else {
-    radar.attr("transform", translate(scaled_width / 2, scaled_height / 2).concat(`scale(${config.scale})`));
+    radar.attr("transform", translate(config.width / 2, config.height / 2));
   }
 
   var grid = radar.append("g");
-
-  // define default font-family
-  config.font_family = config.font_family || "Arial, Helvetica";
 
   // draw grid lines
   grid.append("line")
@@ -265,7 +247,7 @@ function radar_visualization(config) {
         .attr("text-anchor", "middle")
         .style("fill", config.rings[i].color)
         .style("opacity", 0.35)
-        .style("font-family", config.font_family)
+        .style("font-family", "Arial, Helvetica")
         .style("font-size", "42px")
         .style("font-weight", "bold")
         .style("pointer-events", "none")
@@ -273,72 +255,64 @@ function radar_visualization(config) {
     }
   }
 
-  function legend_transform(quadrant, ring, legendColumnWidth, index=null, previousHeight = null) {
-    const dx = ring < 2 ? 0 : legendColumnWidth;
-    let dy = (index == null ? -16 : index * config.legend_line_height);
-
+  function legend_transform(quadrant, ring, index=null) {
+    var dx = ring < 2 ? 0 : 140;
+    var dy = (index == null ? -16 : index * 12);
     if (ring % 2 === 1) {
-      dy = dy + 36 + previousHeight;
+      dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
     }
-
     return translate(
-      config.legend_offset[quadrant].x + dx,
-      config.legend_offset[quadrant].y + dy
+      legend_offset[quadrant].x + dx,
+      legend_offset[quadrant].y + dy
     );
   }
 
   // draw title and legend (only in print layout)
   if (config.print_layout) {
+
     // title
-    radar.append("a")
-      .attr("href", config.repo_url)
-      .attr("transform", translate(config.title_offset.x, config.title_offset.y))
-      .append("text")
-      .attr("class", "hover-underline")  // add class for hover effect
+    radar.append("text")
+      .attr("transform", translate(title_offset.x, title_offset.y))
       .text(config.title)
-      .style("font-family", config.font_family)
+      .style("font-family", "Arial, Helvetica")
       .style("font-size", "30")
       .style("font-weight", "bold")
 
     // date
     radar
       .append("text")
-      .attr("transform", translate(config.title_offset.x, config.title_offset.y + 20))
+      .attr("transform", translate(title_offset.x, title_offset.y + 20))
       .text(config.date || "")
-      .style("font-family", config.font_family)
+      .style("font-family", "Arial, Helvetica")
       .style("font-size", "14")
       .style("fill", "#999")
 
     // footer
     radar.append("text")
-      .attr("transform", translate(config.footer_offset.x, config.footer_offset.y))
-      .text("▲ moved up     ▼ moved down     ★ new     ⬤ no change")
+      .attr("transform", translate(footer_offset.x, footer_offset.y))
+      .text("▲ moved up     ▼ moved down")
       .attr("xml:space", "preserve")
-      .style("font-family", config.font_family)
-      .style("font-size", "12px");
+      .style("font-family", "Arial, Helvetica")
+      .style("font-size", "10px");
 
     // legend
-    const legend = radar.append("g");
-    for (let quadrant = 0; quadrant < 4; quadrant++) {
+    var legend = radar.append("g");
+    for (var quadrant = 0; quadrant < 4; quadrant++) {
       legend.append("text")
         .attr("transform", translate(
-          config.legend_offset[quadrant].x,
-          config.legend_offset[quadrant].y - 45
+          legend_offset[quadrant].x,
+          legend_offset[quadrant].y - 45
         ))
         .text(config.quadrants[quadrant].name)
-        .style("font-family", config.font_family)
-        .style("font-size", "19px")
+        .style("font-family", "Arial, Helvetica")
+        .style("font-size", "18px")
         .style("font-weight", "bold");
-      let previousLegendHeight = 0
-      for (let ring = 0; ring < 4; ring++) {
-        if (ring % 2 === 0) {
-          previousLegendHeight = 0
-        }
+      for (var ring = 0; ring < 4; ring++) {
         legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
+          .attr("transform", legend_transform(quadrant, ring))
           .text(config.rings[ring].name)
-          .style("font-family", config.font_family)
-          .style("font-size", "13px")
+          .style("font-family", "Arial, Helvetica")
+          .style("font-size", "12px")
           .style("font-weight", "bold")
           .style("fill", config.rings[ring].color);
         legend.selectAll(".legend" + quadrant + ring)
@@ -353,65 +327,16 @@ function radar_visualization(config) {
                  return (d.link && config.links_in_new_tabs) ? "_blank" : null;
               })
             .append("text")
-              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, config.legend_column_width, i, previousLegendHeight); })
+              .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
-              .text(function(d) { return d.id + ". " + d.label; })
-              .style("font-family", config.font_family)
+              .text(function(d, i) { return d.id + ". " + d.label; })
+              .style("font-family", "Arial, Helvetica")
               .style("font-size", "11px")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
-              .call(wrap_text)
-              .each(function() {
-                previousLegendHeight += d3.select(this).node().getBBox().height;
-              });
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
       }
     }
-  }
-
-  function wrap_text(text) {
-    let heightForNextElement = 0;
-
-    text.each(function() {
-      const textElement = d3.select(this);
-      const words = textElement.text().split(" ");
-      let line = [];
-
-      // Use '|' at the end of the string so that spaces are not trimmed during rendering.
-      const number = `${textElement.text().split(".")[0]}. |`;
-      const legendNumberText = textElement.append("tspan").text(number);
-      const legendBar = textElement.append("tspan").text('|');
-      const numberWidth = legendNumberText.node().getComputedTextLength() - legendBar.node().getComputedTextLength();
-
-      textElement.text(null);
-
-      let tspan = textElement
-          .append("tspan")
-          .attr("x", 0)
-          .attr("y", heightForNextElement)
-          .attr("dy", 0);
-
-      for (let position = 0; position < words.length; position++) {
-        line.push(words[position]);
-        tspan.text(line.join(" "));
-
-        // Avoid wrap for first line (position !== 1) to not end up in a situation where the long text without
-        // whitespace is wrapped (causing the first line near the legend number to be blank).
-        if (tspan.node().getComputedTextLength() > config.legend_column_width && position !== 1) {
-          line.pop();
-          tspan.text(line.join(" "));
-          line = [words[position]];
-
-          tspan = textElement.append("tspan")
-              .attr("x", numberWidth)
-              .attr("dy", config.legend_line_height)
-              .text(words[position]);
-        }
-      }
-
-      const textBoundingBox = textElement.node().getBBox();
-      heightForNextElement = textBoundingBox.y + textBoundingBox.height;
-    });
   }
 
   // layer for entries
@@ -431,7 +356,7 @@ function radar_visualization(config) {
     .attr("ry", 4)
     .style("fill", "#333");
   bubble.append("text")
-    .style("font-family", config.font_family)
+    .style("font-family", "sans-serif")
     .style("font-size", "10px")
     .style("fill", "#fff");
   bubble.append("path")
@@ -480,7 +405,7 @@ function radar_visualization(config) {
     .enter()
       .append("g")
         .attr("class", "blip")
-        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, config.legend_column_width, i); })
+        .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
         .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
 
@@ -489,7 +414,7 @@ function radar_visualization(config) {
     var blip = d3.select(this);
 
     // blip link
-    if (d.active && Object.prototype.hasOwnProperty.call(d, "link") && d.link) {
+    if (d.active && d.hasOwnProperty("link") && d.link) {
       blip = blip.append("a")
         .attr("xlink:href", d.link);
 
@@ -499,17 +424,13 @@ function radar_visualization(config) {
     }
 
     // blip shape
-    if (d.moved == 1) {
+    if (d.moved > 0) {
       blip.append("path")
         .attr("d", "M -11,5 11,5 0,-13 z") // triangle pointing up
         .style("fill", d.color);
-    } else if (d.moved == -1) {
+    } else if (d.moved < 0) {
       blip.append("path")
         .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
-        .style("fill", d.color);
-    } else if (d.moved == 2) {
-      blip.append("path")
-        .attr("d", d3.symbol().type(d3.symbolStar).size(200))
         .style("fill", d.color);
     } else {
       blip.append("circle")
@@ -525,7 +446,7 @@ function radar_visualization(config) {
         .attr("y", 3)
         .attr("text-anchor", "middle")
         .style("fill", "#fff")
-        .style("font-family", config.font_family)
+        .style("font-family", "Arial, Helvetica")
         .style("font-size", function(d) { return blip_text.length > 2 ? "8px" : "9px"; })
         .style("pointer-events", "none")
         .style("user-select", "none");
@@ -545,55 +466,4 @@ function radar_visualization(config) {
     .velocityDecay(0.19) // magic number (found by experimentation)
     .force("collision", d3.forceCollide().radius(12).strength(0.85))
     .on("tick", ticked);
-
-  function ringDescriptionsTable() {
-    var table = d3.select("body").append("table")
-      .attr("class", "radar-table")
-      .style("border-collapse", "collapse")
-      .style("position", "relative")
-      .style("top", "-70px")  // Adjust this value to move the table closer vertically
-      .style("margin-left", "50px")
-      .style("margin-right", "50px")
-      .style("font-family", config.font_family)
-      .style("font-size", "13px")
-      .style("text-align", "left");
-
-    var thead = table.append("thead");
-    var tbody = table.append("tbody");
-
-    // define fixed width for each column
-    var columnWidth = `${100 / config.rings.length}%`;
-
-    // create table header row with ring names
-    var headerRow = thead.append("tr")
-      .style("border", "1px solid #ddd");
-
-    headerRow.selectAll("th")
-      .data(config.rings)
-      .enter()
-      .append("th")
-      .style("padding", "8px")
-      .style("border", "1px solid #ddd")
-      .style("background-color", d => d.color)
-      .style("color", "#fff")
-      .style("width", columnWidth)
-      .text(d => d.name);
-
-    // create table body row with descriptions
-    var descriptionRow = tbody.append("tr")
-      .style("border", "1px solid #ddd");
-
-    descriptionRow.selectAll("td")
-      .data(config.rings)
-      .enter()
-      .append("td")
-      .style("padding", "8px")
-      .style("border", "1px solid #ddd")
-      .style("width", columnWidth)
-      .text(d => d.description);
-  }
-
-  if (config.print_ring_descriptions_table) {
-    ringDescriptionsTable();
-  }
 }

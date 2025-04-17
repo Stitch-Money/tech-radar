@@ -2,24 +2,28 @@ body {
   font-family: 'Rational Text';
   padding-bottom: 50px;
 }
+
 h3 {
   margin-top: 25px;
 }
 li {
   margin: 25px 50px 0 0;
 }
-table.blurb {
+
+table {
   width: 1400px;
   margin: 0 50px 0 50px;
 }
-td.blurb {
+td {
   width: 50%;
   vertical-align: top;
   padding-right: 60px;
 }
-
-.header {
-  margin-bottom: 30px;
+.hover-underline {
+  text-decoration: none;
+}
+.hover-underline:hover {
+  text-decoration: underline;
 }
 
 p {
@@ -29,7 +33,7 @@ p {
 @font-face {
   font-family: 'Rational Text';
   src: url('/assets/fonts/RationalText-Book.woff2') format('woff2'),
-      url('/assets/fonts/RationalText-Book.woff') format('woff');
+  url('/assets/fonts/RationalText-Book.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -38,7 +42,7 @@ p {
 @font-face {
   font-family: 'Rational Text Medium';
   src: url('/assets/fonts/RationalText-Medium.woff2') format('woff2'),
-      url('/assets/fonts/RationalText-Medium.woff') format('woff');
+  url('/assets/fonts/RationalText-Medium.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -47,7 +51,7 @@ p {
 @font-face {
   font-family: 'Rational TW Text';
   src: url('/assets/fonts/RationalTWText-Book.woff2') format('woff2'),
-      url('/assets/fonts/RationalTWText-Book.woff') format('woff');
+  url('/assets/fonts/RationalTWText-Book.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -56,7 +60,7 @@ p {
 @font-face {
   font-family: 'Reckless Neue';
   src: url('/assets/fonts/RecklessNeue-Book.woff2') format('woff2'),
-      url('/assets/fonts/RecklessNeue-Book.woff') format('woff');
+  url('/assets/fonts/RecklessNeue-Book.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -67,7 +71,7 @@ p {
   display: flex;
 }
 
-.bullet { 
+.bullet {
   color: #911FFF;
   margin-top: 3px;
   margin-left: 5px;
@@ -106,34 +110,7 @@ p {
   color: black;
 }
 
-.legend {
-  width: 65%;
-}
-
-.legendQuadrant {
-  width: 100px;
-  vertical-align: top;
-}
-
-.legendItemBox { 
-  display: flex;
-  flex-direction: row;
-}
-
-.legendItem {
-  font-family: "Rational Text";
-  font-size: 11px;
-}
-
-.legendItem.text {
-  margin-right: 8px;
-}
-
-.legendItem.number {
-  margin-right: 5px;
-}
-
-.ringLegend {
+#radar text {
   font-family: "Rational Text Medium";
   font-size: 13px;
 }

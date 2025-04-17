@@ -327,7 +327,7 @@ function radar_visualization(config) {
         ))
         .text(config.quadrants[quadrant].name)
         .style("font-family", config.font_family)
-        .style("font-size", "19px")
+        .style("font-size", "18px")
         .style("font-weight", "bold");
       let previousLegendHeight = 0
       for (let ring = 0; ring < 4; ring++) {
@@ -338,7 +338,7 @@ function radar_visualization(config) {
           .attr("transform", legend_transform(quadrant, ring, config.legend_column_width, null, previousLegendHeight))
           .text(config.rings[ring].name)
           .style("font-family", config.font_family)
-          .style("font-size", "13px")
+          .style("font-size", "12px")
           .style("font-weight", "bold")
           .style("fill", config.rings[ring].color);
         legend.selectAll(".legend" + quadrant + ring)
