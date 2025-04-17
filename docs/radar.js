@@ -440,20 +440,58 @@ function radar_visualization(config) {
 
   function showBubble(d) {
     if (d.active || config.print_layout) {
+      // The actual text
       var tooltip = d3.select("#bubble text")
-        .text(d.label);
+          .attr("dy", -1)
+          .call(wrapBubbleText, [200, d.label, d.description])
       var bbox = tooltip.node().getBBox();
+      // The whole bubble
       d3.select("#bubble")
-        .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
-        .style("opacity", 0.8);
+          .attr("transform", translate(d.x - bbox.width / 2 - 15, d.y - bbox.height  - 30))
+          .style("opacity", 1)
+          .attr("dy", 1)
+      // The black rectangle background
       d3.select("#bubble rect")
-        .attr("x", -5)
-        .attr("y", -bbox.height)
-        .attr("width", bbox.width + 10)
-        .attr("height", bbox.height + 4);
+          .attr("x", 0 )
+          .attr("y", -10)
+          .attr("width", bbox.width + 30)
+          .attr("height", bbox.height + 20)
+      // The down arrow
       d3.select("#bubble path")
-        .attr("transform", translate(bbox.width / 2 - 5, 3));
+          .attr("transform", translate(bbox.width / 2 + 10, bbox.height + 9));
     }
+  }
+
+  function wrapBubbleText(text, data) {
+    text.each(function() {
+      var text = d3.select(this),
+          description = data[2],
+          words = description.split(/\s+/).reverse(),
+          title = data[1],
+          word,
+          line = [],
+          lineHeight = 1.1, // ems
+          y = text.attr("y"),
+          dy = parseFloat(text.attr("dy"))
+      titleSpacing = 0.5
+
+      text.node().innerHTML = ''
+      // Add the title
+      tspan = text.append("tspan").attr("x", 15).attr("y", y + 20).attr("dy", dy + "em").text(title).attr("font-family", "Rational Text Medium");
+      dy = dy + lineHeight + titleSpacing
+      tspan = text.append("tspan").attr("x", 15).attr("y", y + 20).attr("dy", dy + "em");
+      while (word = words.pop()) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > data[0]) {
+          dy = dy + lineHeight
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text.append("tspan").attr("x", 15).attr("y", y + 20).attr("dy", dy + "em").text(word);
+        }
+      }
+    });
   }
 
   function hideBubble(d) {
@@ -464,13 +502,11 @@ function radar_visualization(config) {
 
   function highlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.setAttribute("filter", "url(#solid)");
-    legendItem.setAttribute("fill", "white");
+    legendItem.setAttribute("fill", config.legend.item.text.highlighted_color);
   }
 
   function unhighlightLegendItem(d) {
     var legendItem = document.getElementById("legendItem" + d.id);
-    legendItem.removeAttribute("filter");
     legendItem.removeAttribute("fill");
   }
 
@@ -501,12 +537,12 @@ function radar_visualization(config) {
     // blip shape
     if (d.moved == 1) {
       blip.append("path")
-        .attr("d", "M -11,5 11,5 0,-13 z") // triangle pointing up
+        .attr("d",  "m -2.3807652,-11.744401 c 1.1378619,-1.931959 4.0503168,-1.93196 5.1881787,0 L 11.111864,2.3555527 C 12.227941,4.2503864 10.794168,6.5917241 8.5178039,6.5917241 H -8.0911455 c -2.2763845,0 -3.7101335,-2.3413377 -2.5941085,-4.2361714 z") // triangle pointing up
         .style("fill", d.color);
     } else if (d.moved == -1) {
       blip.append("path")
-        .attr("d", "M -11,-5 11,-5 0,13 z") // triangle pointing down
-        .style("fill", d.color);
+        .attr("d", "m 2.5422079,11.308501 c -1.1378619,1.931959 -4.0503168,1.93196 -5.1881787,0 L -10.950421,-2.7914534 c -1.116077,-1.8948337 0.317696,-4.2361717 2.5940598,-4.2361717 H 8.2525885 c 2.2763845,0 3.7101335,2.341338 2.5941085,4.2361717 z") // triangle pointing down
+        .style("fill", d.color)
     } else if (d.moved == 2) {
       blip.append("path")
         .attr("d", d3.symbol().type(d3.symbolStar).size(200))

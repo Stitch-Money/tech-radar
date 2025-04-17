@@ -34,11 +34,10 @@ fetch('./config.json').then(function(response) {
     colors: {
       background: "#fff",
       grid: "#D1CFD6",
-      circle: "#17121F",
       inactive: "#ddd"
     },
     font_family: 'Rational Text',
-    legend_column_width: 160,
+    legend_column_width: 140,
     quadrants: [
       { name: "Techniques and Patterns" },
       { name: "Platforms" },
@@ -55,13 +54,12 @@ fetch('./config.json').then(function(response) {
       item: {
         text: {
           highlighted_color: "#911FFF",
-          unhighlighted_color: "#17121F"
-        },
-        number: {
-          highlighted_color: "#911FFF",
-          unhighlighted_color: "#17121F"
         }
       },
+    },
+    footer_offset: {
+      x: -155,
+      y: 425
     },
     print_layout: true,
     entries: data.entries
