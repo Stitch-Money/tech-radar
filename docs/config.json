@@ -226,6 +226,14 @@
       "ring": 0
     },
     {
+      "description": "Argo Workflows is an open-source, container-native workflow engine for Kubernetes that orchestrates parallel jobs using DAGs and is widely used for CI/CD, data processing, and ML pipelines",
+      "moved": 0,
+      "label": "Argo Workflows",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
       "description": "RabbitMQ is an open-source message broker software that facilitates communication between different applications and services by using a queue-based system",
       "moved": 1,
       "label": "RabbitMQ",
@@ -570,9 +578,33 @@
       "ring": 0
     },
     {
+      "description": "k6 is an open-source load testing tool for engineering teams; tests are written in JavaScript and it supports load, stress, and performance testing with CI/CD integration",
+      "moved": 0,
+      "label": "k6",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
       "description": "Incident.io is a platform for incident management and response",
       "moved": 0,
       "label": "Incident.io",
+      "quadrant": 3,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Cursor is an AI-powered code editor that integrates large language models to help with coding, refactoring, and navigation",
+      "moved": 0,
+      "label": "Cursor",
+      "quadrant": 3,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Claude is an AI assistant by Anthropic, used for writing, analysis, coding, and general reasoning tasks",
+      "moved": 0,
+      "label": "Claude",
       "quadrant": 3,
       "active": true,
       "ring": 1
@@ -597,6 +629,14 @@
       "description": "Sealed secrets is a tool to encrypt secrets for storage in source control which are decrypted by a target cluster",
       "moved": 0,
       "label": "Sealed Secrets",
+      "quadrant": 3,
+      "active": true,
+      "ring": 2
+    },
+    {
+      "description": "Coderabbit is an AI-powered code review platform that automates pull request reviews with summaries, walkthroughs, and integrated linters and security scanners",
+      "moved": 0,
+      "label": "Coderabbit",
       "quadrant": 3,
       "active": true,
       "ring": 2

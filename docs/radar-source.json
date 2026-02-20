@@ -129,6 +129,10 @@
       {
         "label": "AWS DynamoDB",
         "description": "Amazon DynamoDB is a serverless, fully managed NoSQL database that delivers single-digit millisecond performance at any scale"
+      },
+      {
+        "label": "Argo Workflows",
+        "description": "Argo Workflows is an open-source, container-native workflow engine for Kubernetes that orchestrates parallel jobs using DAGs and is widely used for CI/CD, data processing, and ML pipelines"
       }
     ],
     "Trial": [
@@ -335,12 +339,24 @@
       {
         "label": "Postman",
         "description": "Postman helps our engineers build collections to test our APIs, integrate with financial institutions and ease development"
+      },
+      {
+        "label": "k6",
+        "description": "k6 is an open-source load testing tool for engineering teams; tests are written in JavaScript and it supports load, stress, and performance testing with CI/CD integration"
       }
     ],
     "Trial": [
       {
         "label": "Incident.io",
         "description": "Incident.io is a platform for incident management and response"
+      },
+      {
+        "label": "Cursor",
+        "description": "Cursor is an AI-powered code editor that integrates large language models to help with coding, refactoring, and navigation"
+      },
+      {
+        "label": "Claude",
+        "description": "Claude is an AI assistant by Anthropic, used for writing, analysis, coding, and general reasoning tasks"
       }
     ],
     "Assess": [
@@ -355,6 +371,10 @@
       {
         "label": "Sealed Secrets",
         "description": "Sealed secrets is a tool to encrypt secrets for storage in source control which are decrypted by a target cluster"
+      },
+      {
+        "label": "Coderabbit",
+        "description": "Coderabbit is an AI-powered code review platform that automates pull request reviews with summaries, walkthroughs, and integrated linters and security scanners"
       }
     ],
     "Hold": [
