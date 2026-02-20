@@ -1,422 +1,6 @@
 {
-  "date": "2025.04",
+  "date": "2026.02",
   "entries": [
-    {
-      "description": "Hasura sits above our postgresql databases allowing us to access our data with a real time GraphQL API",
-      "moved": -1,
-      "label": "Hasura",
-      "quadrant": 1,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "IdentityServer4 is a framework that implements OAuth2 with OpenID Connect and provides the basis for our SSO and token management",
-      "moved": 0,
-      "label": "IdentityServer4",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Helm is a powerful tool we use to package and deploy some of our applications to our kubernetes clusters",
-      "moved": 1,
-      "label": "Helm",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Terraform is an infrastructure as code tool that we leverage to ensure our infrastructure management is repeatable and changes managed ",
-      "moved": 1,
-      "label": "Terraform",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Postman helps our engineers build collections to test our APIs, integrate with financial institutions and ease development",
-      "moved": 1,
-      "label": "Postman",
-      "quadrant": 3,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "All our applications are deployed to our kubernetes clusters running in Azure. As a container orchestration platform it allows us to scale and handle load with confidence",
-      "moved": 0,
-      "label": "Azure Kubernetes Service",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Postgresql is our relational database of choice, we take advantage of Azure's managed solution which allows us to focus on our core product offerings",
-      "moved": 0,
-      "label": "Azure Managed Postgres",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "mySQL is the relational database that we use in our Stitch In-Person solutions.",
-      "moved": 0,
-      "label": "mySQL",
-      "quadrant": 1,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "MongoDB is a NoSQL document database, meaning it stores data in flexible, JSON-like documents.",
-      "moved": 0,
-      "label": "MongoDB",
-      "quadrant": 1,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "Tilt is the latest tool we're experimenting with to help manage deployment of our applications to our local development cluster",
-      "moved": 1,
-      "label": "Tilt",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Azure application insight is one of our solutions for monitoring and logging",
-      "moved": -1,
-      "label": "Azure App Insights",
-      "quadrant": 3,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "Datadog is another provider we utilize to improve observability into our applications and infrastructure. We leverage datadog's tracing, logging and UX monitoring solutions.",
-      "moved": 1,
-      "label": "Datadog",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Linear is our project management and issue tracking tool",
-      "moved": 0,
-      "label": "Linear",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "React is a popular library for building UIs with a component based, declarative approach",
-      "moved": 0,
-      "label": "React",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Typescript is a superset of javascript and our primary programming language at Stitch",
-      "moved": 0,
-      "label": "Typescript",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Docker is a containerization platform used to package up our applications for deployment to our kubernetes clusters",
-      "moved": 0,
-      "label": "Docker ",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Traefik at its core is a http reverse proxy and we use it within our kubernetes clusters to manage our networking layer",
-      "moved": 0,
-      "label": "Traefik ",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "OAuth2 (Open Authorization) is an industry standard for authentication and authorization",
-      "moved": 0,
-      "label": "OAuth2",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "OpenID Connect is an identity layer on top of OAuth 2.0",
-      "moved": 0,
-      "label": "OpenID Connect",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of our applications use the actor model benefiting from its graceful error handling and isolation features",
-      "moved": 0,
-      "label": "Actor Model",
-      "quadrant": 0,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of our applications use the actor model benefiting from its graceful error handling and isolation features",
-      "moved": 0,
-      "label": "Event Driven Architecture",
-      "quadrant": 0,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "Github Actions is is used as both a tool for maintaining our code quality standards as well as our CI/CD",
-      "moved": 0,
-      "label": "Github Actions",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "SonarQube is a static code analysis tool that ensure code quality",
-      "moved": 0,
-      "label": "SonarQube",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Gitlab is a code repository and CI/CD tool used for our Stitch In-Person platform.",
-      "moved": 0,
-      "label": "Gitlab",
-      "quadrant": 3,
-      "active": true,
-      "ring": 2
-    },
-    {
-      "description": "Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes",
-      "moved": 0,
-      "label": "ArgoCD",
-      "quadrant": 3,
-      "active": true,
-      "ring": 2
-    },
-    {
-      "description": "Nomad enables developers to use declarative infrastructure-as-code for deploying applications.",
-      "moved": 0,
-      "label": "Nomad",
-      "quadrant": 3,
-      "active": true,
-      "ring": 2
-    },
-    {
-      "description": "Azure functions is a serverless code platform",
-      "moved": -1,
-      "label": "Azure Functions",
-      "quadrant": 1,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "Azure Container Registry provides secure storage for our docker containers",
-      "moved": 0,
-      "label": "Azure Container Registry",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Key Vault is Azure's secure key management solution",
-      "moved": 0,
-      "label": "Azure Key Vault",
-      "quadrant": 1,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "Vault is a platform by Hashicorp for managing application secrets",
-      "moved": 0,
-      "label": "Hashicorp Vault",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Koa is a simple, fast web framework for Node",
-      "moved": 0,
-      "label": "Koa",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Nextjs is a feature rich react framework",
-      "moved": 0,
-      "label": "NextJs",
-      "quadrant": 2,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "Svelte is a compiler-based JavaScript framework for building user interfaces.",
-      "moved": 1,
-      "label": "Svelte",
-      "quadrant": 2,
-      "active": true,
-      "ring": 2
-    },
-    {
-      "description": "Decoders is a validation library we use for validating input and response data at runtime",
-      "moved": 0,
-      "label": "Decoders",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Zod is a validation library we use for validating input and response data at runtime",
-      "moved": 1,
-      "label": "Zod",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Pnpm is a performative packet manager which is fast and mono repo friendly",
-      "moved": 1,
-      "label": "Pnpm",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "GraphQL is a query language for APIs. At Stitch we use GraphQL extensively throughout out stack to describe and query our data",
-      "moved": 0,
-      "label": "GraphQL",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "ISO 20022 is an international standard for exchanging electronic messages between financial institutions, designed to enhance data quality and efficiency in payments and other financial transactions.",
-      "moved": 0,
-      "label": "ISO 20022 Standard",
-      "quadrant": 2,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "At Stitch we use Snowflake's data lake capabilities and forms part of our data analytics pipeline used for pulling data from to visualise and analyse",
-      "moved": 1,
-      "label": "Snowflake",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "At Stitch we use Notion as our store for documentation, projects and customer stories",
-      "moved": 0,
-      "label": "Notion",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Opsgenie is an incident management platform designed to help teams effectively manage and respond to alerts and incidents",
-      "moved": 0,
-      "label": "OpsGenie",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Cloudflare serves as our CDN, DNS and firewall",
-      "moved": 0,
-      "label": "Cloudflare",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Tailwind is a collection of CSS utility classes that helps us build responsive and maintainable UIs",
-      "moved": 0,
-      "label": "Tailwind CSS",
-      "quadrant": 2,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "K9s is a small lightweight cli tool we use in development to interact with our clusters",
-      "moved": 1,
-      "label": "k9s",
-      "quadrant": 3,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Lens is a UI driven tool we use in development to interact with our clusters",
-      "moved": 0,
-      "label": "Lens",
-      "quadrant": 3,
-      "active": true,
-      "ring": 2
-    },
-    {
-      "description": "Blob storage is Azure's solution for storage of unstructured objects",
-      "moved": 0,
-      "label": "Azure Blob Storage",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "XState is a powerful framework for building finite state machines in Typescript",
-      "moved": 0,
-      "label": "XState",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Cucumber is a Behavior-Driven Development (BDD) testing framework that allows writing test cases in plain English",
-      "moved": -1,
-      "label": "Cucumber",
-      "quadrant": 2,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "Go is a widely used programming language built with concurrency and resiliency in mind. Being trialed in a few services at Stitch.",
-      "moved": 0,
-      "label": "Go",
-      "quadrant": 2,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "Kotlin is a modern programming language running in the Java Virtual Machine, which we use for our Stitch In-Person platform.",
-      "moved": 0,
-      "label": "Kotlin",
-      "quadrant": 2,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "Playwright is a javascript end-to-end testing framework with a focus on UI automation and CI integration",
-      "moved": -1,
-      "label": "Playwright",
-      "quadrant": 3,
-      "active": true,
-      "ring": 3
-    },
-    {
-      "description": "Vitest is a tool used for majority of our unit testing needs as it provides a simple interface with minimal configuration",
-      "moved": 1,
-      "label": "Vitest",
-      "quadrant": 2,
-      "active": true,
-      "ring": 0
-    },
     {
       "description": "BullMQ is a reliable, stable and scalable queuing system backed by Redis",
       "moved": 1,
@@ -424,38 +8,6 @@
       "quadrant": 0,
       "active": true,
       "ring": 0
-    },
-    {
-      "description": "Kafka is a distributed stream processing platform used for building real-time data pipelines and streaming applications",
-      "moved": 1,
-      "label": "Kafka",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "",
-      "moved": 1,
-      "label": "Protobuf",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "RabbitMQ is an open-source message broker software that facilitates communication between different applications and services by using a queue-based system",
-      "moved": 1,
-      "label": "RabbitMQ",
-      "quadrant": 1,
-      "active": true,
-      "ring": 1
-    },
-    {
-      "description": "Sealed secrets is a tool to encrypt secrets for storage in source control which are decrypted by a target cluster",
-      "moved": 0,
-      "label": "Sealed Secrets",
-      "quadrant": 3,
-      "active": true,
-      "ring": 2
     },
     {
       "description": "A monorepo is a software development strategy where many projects or services are stored in the same repository",
@@ -470,22 +22,6 @@
       "moved": 0,
       "label": "Microservices",
       "quadrant": 0,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Redis is an in memory datastore that can be persisted to disk and uses a key-value data model",
-      "moved": 1,
-      "label": "Redis",
-      "quadrant": 1,
-      "active": true,
-      "ring": 0
-    },
-    {
-      "description": "Apollo server is a spec compliant GraphQL we use as an add on to Koa",
-      "moved": 0,
-      "label": "Apollo Server",
-      "quadrant": 2,
       "active": true,
       "ring": 0
     },
@@ -506,6 +42,422 @@
       "ring": 0
     },
     {
+      "description": "DiD is a security approach where a series of layered defensive measures are taken to protect sensitive data ",
+      "moved": 0,
+      "label": "Defense in Depth",
+      "quadrant": 0,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of our applications use the actor model benefiting from its graceful error handling and isolation features",
+      "moved": 0,
+      "label": "Event Driven Architecture",
+      "quadrant": 0,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "The actor model is a conceptual model used to deal with concurrent computation. A number of our applications use the actor model benefiting from its graceful error handling and isolation features",
+      "moved": 0,
+      "label": "Actor Model",
+      "quadrant": 0,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "All our applications are deployed to our kubernetes clusters running in Azure. As a container orchestration platform it allows us to scale and handle load with confidence",
+      "moved": 0,
+      "label": "Azure Kubernetes Service",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Postgresql is our relational database of choice, we take advantage of Azure's managed solution which allows us to focus on our core product offerings",
+      "moved": 0,
+      "label": "Azure Managed Postgres",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "AWS Route 53 is a highly available and scalable Domain Name System (DNS) web service",
+      "moved": 0,
+      "label": "AWS R53",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Docker is a containerization platform used to package up our applications for deployment to our kubernetes clusters",
+      "moved": 0,
+      "label": "Docker ",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Azure Container Registry provides secure storage for our docker containers",
+      "moved": 0,
+      "label": "Azure Container Registry",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Vault is a platform by Hashicorp for managing application secrets",
+      "moved": 0,
+      "label": "Hashicorp Vault",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "At Stitch we use Snowflake's data lake capabilities and forms part of our data analytics pipeline used for pulling data from to visualise and analyse",
+      "moved": 1,
+      "label": "Snowflake",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Cloudflare serves as our CDN, DNS and firewall",
+      "moved": 0,
+      "label": "Cloudflare",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Blob storage is Azure's solution for storage of unstructured objects",
+      "moved": 0,
+      "label": "Azure Blob Storage",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Kafka is a distributed stream processing platform used for building real-time data pipelines and streaming applications",
+      "moved": 1,
+      "label": "Kafka",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "",
+      "moved": 1,
+      "label": "Protobuf",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Redis is an in memory datastore that can be persisted to disk and uses a key-value data model",
+      "moved": 1,
+      "label": "Redis",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Istio is a service mesh for Kubernetes that provides a way to manage traffic flow and security between services",
+      "moved": 0,
+      "label": "Istio",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Amazon VPC lets you create a logically isolated virtual network in the AWS cloud, with your own IP ranges, subnets, and route tables, so you can run resources in a secure, scalable environment",
+      "moved": 0,
+      "label": "AWS VPC",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "AWS Direct Connect provides a dedicated network connection between your on-premises network and AWS, bypassing the public internet for lower latency and higher throughput",
+      "moved": 0,
+      "label": "AWS Direct Connect",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "AWS Transit Gateway is a network hub that connects multiple VPCs and on-premises networks through a single gateway, simplifying routing and reducing peering complexity",
+      "moved": 0,
+      "label": "AWS Transit Gateway",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Amazon EC2 provides on-demand, scalable virtual servers (instances) in the cloud so you can run applications with flexible compute capacity",
+      "moved": 0,
+      "label": "AWS EC2",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Amazon S3 is an object storage service that stores and retrieves any amount of data with high durability, availability, and scalability",
+      "moved": 0,
+      "label": "AWS S3",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "AWS KMS is a managed service for creating and controlling encryption keys used to protect your data across AWS and in your applications",
+      "moved": 0,
+      "label": "AWS KMS",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Amazon DynamoDB is a serverless, fully managed NoSQL database that delivers single-digit millisecond performance at any scale",
+      "moved": 0,
+      "label": "AWS DynamoDB",
+      "quadrant": 1,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "RabbitMQ is an open-source message broker software that facilitates communication between different applications and services by using a queue-based system",
+      "moved": 1,
+      "label": "RabbitMQ",
+      "quadrant": 1,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes",
+      "moved": 0,
+      "label": "ArgoCD",
+      "quadrant": 1,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "IBM NS1 is a managed DNS provider that allows us to provide continuity during network outages.",
+      "moved": 0,
+      "label": "IBM NS1",
+      "quadrant": 1,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Kafka Connect is a tool for building and running reusable producers and consumers, called connectors, that move data between Kafka and other systems",
+      "moved": 0,
+      "label": "Kafka Connect",
+      "quadrant": 1,
+      "active": true,
+      "ring": 2
+    },
+    {
+      "description": "Hasura sits above our postgresql databases allowing us to access our data with a real time GraphQL API",
+      "moved": -1,
+      "label": "Hasura",
+      "quadrant": 1,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "mySQL is the relational database that we use in our Stitch In-Person solutions.",
+      "moved": 0,
+      "label": "mySQL",
+      "quadrant": 1,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "MongoDB is a NoSQL document database, meaning it stores data in flexible, JSON-like documents.",
+      "moved": 0,
+      "label": "MongoDB",
+      "quadrant": 1,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "Azure functions is a serverless code platform",
+      "moved": -1,
+      "label": "Azure Functions",
+      "quadrant": 1,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "Key Vault is Azure's secure key management solution",
+      "moved": 0,
+      "label": "Azure Key Vault",
+      "quadrant": 1,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "IdentityServer4 is a framework that implements OAuth2 with OpenID Connect and provides the basis for our SSO and token management",
+      "moved": 0,
+      "label": "IdentityServer4",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "React is a popular library for building UIs with a component based, declarative approach",
+      "moved": 0,
+      "label": "React",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Typescript is a superset of javascript and our primary programming language at Stitch",
+      "moved": 0,
+      "label": "Typescript",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "OAuth2 (Open Authorization) is an industry standard for authentication and authorization",
+      "moved": 0,
+      "label": "OAuth2",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "OpenID Connect is an identity layer on top of OAuth 2.0",
+      "moved": 0,
+      "label": "OpenID Connect",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Koa is a simple, fast web framework for Node",
+      "moved": 0,
+      "label": "Koa",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Decoders is a validation library we use for validating input and response data at runtime",
+      "moved": 0,
+      "label": "Decoders",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Zod is a validation library we use for validating input and response data at runtime",
+      "moved": 1,
+      "label": "Zod",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "GraphQL is a query language for APIs. At Stitch we use GraphQL extensively throughout out stack to describe and query our data",
+      "moved": 0,
+      "label": "GraphQL",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "A REST structured API as an alternative to GraphQL for easier integration.",
+      "moved": 0,
+      "label": "REST",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "XState is a powerful framework for building finite state machines in Typescript",
+      "moved": 0,
+      "label": "XState",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Vitest is a tool used for majority of our unit testing needs as it provides a simple interface with minimal configuration",
+      "moved": 1,
+      "label": "Vitest",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Apollo server is a spec compliant GraphQL we use as an add on to Koa",
+      "moved": 0,
+      "label": "Apollo Server",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Kotlin is a modern programming language running in the Java Virtual Machine, which we use for our Stitch In-Person platform.",
+      "moved": 1,
+      "label": "Kotlin",
+      "quadrant": 2,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Nextjs is a feature rich react framework",
+      "moved": 0,
+      "label": "NextJs",
+      "quadrant": 2,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "ISO 20022 is an international standard for exchanging electronic messages between financial institutions, designed to enhance data quality and efficiency in payments and other financial transactions.",
+      "moved": 0,
+      "label": "ISO 20022 Standard",
+      "quadrant": 2,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Tailwind is a collection of CSS utility classes that helps us build responsive and maintainable UIs",
+      "moved": 0,
+      "label": "Tailwind CSS",
+      "quadrant": 2,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Go is a widely used programming language built with concurrency and resiliency in mind. Being trialed in a few services at Stitch.",
+      "moved": 0,
+      "label": "Go",
+      "quadrant": 2,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Svelte is a compiler-based JavaScript framework for building user interfaces.",
+      "moved": 1,
+      "label": "Svelte",
+      "quadrant": 2,
+      "active": true,
+      "ring": 2
+    },
+    {
+      "description": "Cucumber is a Behavior-Driven Development (BDD) testing framework that allows writing test cases in plain English",
+      "moved": -1,
+      "label": "Cucumber",
+      "quadrant": 2,
+      "active": true,
+      "ring": 3
+    },
+    {
       "description": "Nact is a Typescript implementation of the Actor Model",
       "moved": -1,
       "label": "Nact",
@@ -514,12 +466,164 @@
       "ring": 3
     },
     {
-      "description": "DiD is a security approach where a series of layered defensive measures are taken to protect sensitive data ",
-      "moved": 0,
-      "label": "Defense in Depth",
-      "quadrant": 0,
+      "description": "Helm is a powerful tool we use to package and deploy some of our applications to our kubernetes clusters",
+      "moved": 1,
+      "label": "Helm",
+      "quadrant": 3,
       "active": true,
       "ring": 0
+    },
+    {
+      "description": "Terraform is an infrastructure as code tool that we leverage to ensure our infrastructure management is repeatable and changes managed ",
+      "moved": 1,
+      "label": "Terraform",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Tilt is the latest tool we're experimenting with to help manage deployment of our applications to our local development cluster",
+      "moved": 1,
+      "label": "Tilt",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Datadog is another provider we utilize to improve observability into our applications and infrastructure. We leverage datadog's tracing, logging and UX monitoring solutions.",
+      "moved": 1,
+      "label": "Datadog",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Linear is our project management and issue tracking tool",
+      "moved": 0,
+      "label": "Linear",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Traefik at its core is a http reverse proxy and we use it within our kubernetes clusters to manage our networking layer",
+      "moved": 0,
+      "label": "Traefik ",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Github Actions is is used as both a tool for maintaining our code quality standards as well as our CI/CD",
+      "moved": 0,
+      "label": "Github Actions",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "SonarQube is a static code analysis tool that ensure code quality",
+      "moved": 0,
+      "label": "SonarQube",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Pnpm is a performative packet manager which is fast and mono repo friendly",
+      "moved": 0,
+      "label": "Pnpm",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "At Stitch we use Notion as our store for documentation, projects and customer stories",
+      "moved": 0,
+      "label": "Notion",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "K9s is a small lightweight cli tool we use in development to interact with our clusters",
+      "moved": 0,
+      "label": "k9s",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes",
+      "moved": 1,
+      "label": "ArgoCD",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Postman helps our engineers build collections to test our APIs, integrate with financial institutions and ease development",
+      "moved": 0,
+      "label": "Postman",
+      "quadrant": 3,
+      "active": true,
+      "ring": 0
+    },
+    {
+      "description": "Incident.io is a platform for incident management and response",
+      "moved": 0,
+      "label": "Incident.io",
+      "quadrant": 3,
+      "active": true,
+      "ring": 1
+    },
+    {
+      "description": "Gitlab is a code repository and CI/CD tool used for our Stitch In-Person platform.",
+      "moved": 0,
+      "label": "Gitlab",
+      "quadrant": 3,
+      "active": true,
+      "ring": 2
+    },
+    {
+      "description": "Lens is a UI driven tool we use in development to interact with our clusters",
+      "moved": 0,
+      "label": "Lens",
+      "quadrant": 3,
+      "active": true,
+      "ring": 2
+    },
+    {
+      "description": "Sealed secrets is a tool to encrypt secrets for storage in source control which are decrypted by a target cluster",
+      "moved": 0,
+      "label": "Sealed Secrets",
+      "quadrant": 3,
+      "active": true,
+      "ring": 2
+    },
+    {
+      "description": "Playwright is a javascript end-to-end testing framework with a focus on UI automation and CI integration",
+      "moved": -1,
+      "label": "Playwright",
+      "quadrant": 3,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "Opsgenie is an incident management platform designed to help teams effectively manage and respond to alerts and incidents",
+      "moved": 0,
+      "label": "OpsGenie",
+      "quadrant": 3,
+      "active": true,
+      "ring": 3
+    },
+    {
+      "description": "Nomad enables developers to use declarative infrastructure-as-code for deploying applications.",
+      "moved": 0,
+      "label": "Nomad",
+      "quadrant": 3,
+      "active": true,
+      "ring": 3
     }
   ]
 }

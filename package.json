@@ -19,6 +19,7 @@
     "start": "browser-sync docs -w",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint docs/*.js",
-    "lint:html": "eslint docs/*.html"
+    "lint:html": "eslint docs/*.html",
+    "build:config": "node scripts/build-config.js"
   }
 }

@@ -71,6 +71,13 @@ in adjusting the size of the radar.
 As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
 Radar](http://zalando.github.io/tech-radar/).
 
+### Maintaining the radar data
+
+The diagram is driven by `docs/config.json`, which uses numeric `quadrant` and `ring` indexes. To edit the radar in a more readable way, use the structured source file instead:
+
+- **`docs/radar-source.json`** — Same data organized by quadrant (Techniques and Patterns, Platforms, Languages and Frameworks, Tools) as top-level keys; under each quadrant, ring names (Adopt, Trial, Assess, Hold) each hold an array of items. Each item is an object with `label`, `description`, and optional `link`, `active`, `moved`.
+- Run **`npm run build:config`** to regenerate `docs/config.json` from `docs/radar-source.json`. You can also run `node scripts/build-config.js [source.json] [output.json]` with custom paths.
+
 ## Deployment
 
 Tech Radar is a static page, so it can be deployed using any hosting provider of your choice offering static page hosting.
